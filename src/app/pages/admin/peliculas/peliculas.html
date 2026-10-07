@@ -1,0 +1,115 @@
+<div class="peliculas-container">
+
+    <!-- ENCABEZADO -->
+    <div class="peliculas-header">
+
+        <div>
+            <h2>Películas</h2>
+
+            <p>
+                Administrá las películas del cine
+            </p>
+        </div>
+
+        <button
+            type="button"
+            class="btn-nueva"
+            (click)="abrirFormulario()"
+        >
+            + Nueva película
+        </button>
+
+    </div>
+
+
+    <!-- LISTA DE PELÍCULAS -->
+    <div class="peliculas-lista">
+
+        <div
+            class="pelicula-item"
+            *ngFor="let pelicula of peliculas()"
+        >
+
+            <img
+                [src]="pelicula.imagen"
+                [alt]="pelicula.nombre"
+            >
+
+            <div class="pelicula-info">
+
+                <h3>
+                    {{ pelicula.nombre }}
+                </h3>
+
+                <p>
+                    {{ pelicula.sinopsis }}
+                </p>
+
+                <span>
+                    Duración:
+                    {{ formatearDuracion(pelicula.duracion) }}
+                </span>
+
+                <span>
+                    Clasificación:
+                    {{ pelicula.clasificacion_de_edad === 0
+                        ? 'ATP'
+                        : '+' + pelicula.clasificacion_de_edad }}
+                </span>
+
+                <span>
+                    Formatos:
+                    {{ formatosPorPelicula()[pelicula.id]?.join(' · ') || 'Sin formatos' }}
+                </span>
+
+                <span>
+                    Estado:
+                    {{ pelicula.estado ? 'Activa' : 'Inactiva' }}
+                </span>
+
+
+                <!-- ACCIONES -->
+                <div class="pelicula-acciones">
+
+                    <button
+                        type="button"
+                        class="btn-editar"
+                        (click)="editarPelicula(pelicula)"
+                    >
+                        Editar
+                    </button>
+
+                    <button
+                        type="button"
+                        *ngIf="pelicula.estado"
+                        class="btn-estado"
+                        (click)="cambiarEstado(pelicula)"
+                    >
+                        Desactivar
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- FORMULARIO -->
+
+<app-pelicula-form
+    *ngIf="mostrarFormulario"
+    [generos]="generos"
+    [formatos]="formatos"
+    [editando]="editando"
+    [pelicula]="peliculaSeleccionada"
+    [generosSeleccionadosIniciales]="generosSeleccionados"
+    [formatosSeleccionadosIniciales]="formatosSeleccionados"
+    (guardar)="guardarPelicula($event)"
+    (cancelar)="cerrarFormulario()"
+>
+</app-pelicula-form>

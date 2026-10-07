@@ -1,0 +1,34 @@
+<div class="generos-container">
+
+    <div class="generos-header">
+
+        <div>
+            <h2>Géneros</h2>
+
+            <p>
+                Géneros disponibles para las películas
+            </p>
+
+            <p>
+                Cantidad: {{ generos().length }}
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="generos-lista">
+
+        <div
+            class="genero-item"
+            *ngFor="let genero of generos()">
+
+            <span>
+                🎭 {{ genero.nombre }}
+            </span>
+
+        </div>
+
+    </div>
+
+</div>

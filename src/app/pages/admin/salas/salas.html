@@ -1,0 +1,47 @@
+<div class="salas-container">
+
+    <!-- ENCABEZADO -->
+    <div class="salas-header">
+
+        <div>
+            <h2>Salas</h2>
+            <p>Administrá las salas del cine</p>
+        </div>
+
+    </div>
+
+
+    <!-- LISTA DE SALAS -->
+    <div class="salas-lista">
+
+        <div
+            class="sala-item"
+            *ngFor="let sala of salas()"
+        >
+
+            <div class="sala-info">
+
+                <h3>
+                    {{ sala.nombre }}
+                </h3>
+
+                <p>
+                    Sala #{{ sala.id }}
+                </p>
+
+                <p>
+                    Formato:
+                    <span>{{ sala.formato }}</span>
+                </p>
+
+                <p class="sala-capacidad">
+                    Capacidad: 532 butacas
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

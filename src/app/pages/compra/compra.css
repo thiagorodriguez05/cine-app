@@ -1,0 +1,376 @@
+.compra-container {
+  box-sizing: border-box;
+  height: 100vh;
+  overflow: hidden;
+  background: #111;
+  color: white;
+}
+
+.compra-header {
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 90px;
+  padding: 0 30px;
+  border-bottom: 1px solid #292929;
+}
+
+.compra-header h1 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.btn-volver,
+.btn-cerrar {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: #242424;
+  color: #aaa;
+  text-decoration: none;
+  font-size: 28px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn-volver {
+  left: 30px;
+}
+
+.btn-cerrar {
+  right: 30px;
+}
+
+.btn-volver:hover,
+.btn-cerrar:hover {
+  background: #333;
+  color: white;
+}
+
+.compra-contenido {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 430px;
+  height: calc(100vh - 90px);
+}
+
+.entradas {
+  box-sizing: border-box;
+  padding: 35px 50px;
+  overflow: hidden;
+}
+
+.entradas > h2 {
+  margin: 0 0 25px;
+  font-size: 32px;
+}
+
+.entradas > h3 {
+  margin: 0 0 18px;
+  font-size: 24px;
+  text-transform: uppercase;
+}
+
+.tipo-entrada {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 650px;
+  height: 105px;
+  margin-bottom: 14px;
+  padding: 20px 28px;
+  border-radius: 12px;
+  background: #242424;
+}
+
+.entrada-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.entrada-info strong {
+  font-size: 16px;
+}
+
+.entrada-info span {
+  color: white;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.cantidad {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.cantidad button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: none;
+  border-radius: 50%;
+  background: #333;
+  color: white;
+  cursor: pointer;
+  font-size: 24px;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.cantidad button:hover {
+  background: #ed1018;
+  transform: scale(1.05);
+}
+
+.cantidad span {
+  min-width: 20px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.resumen {
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 90px);
+  padding: 35px 30px 100px;
+  border-left: 1px solid #292929;
+}
+
+.resumen h2 {
+  margin: 0 0 25px;
+  font-size: 32px;
+}
+
+.pelicula-resumen {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #292929;
+}
+
+.pelicula-resumen > span,
+.funcion-resumen > span {
+  display: block;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+.pelicula-datos {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.pelicula-datos img {
+  width: 65px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.pelicula-datos div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pelicula-datos strong {
+  font-size: 17px;
+}
+
+.pelicula-datos span {
+  color: #999;
+  font-size: 15px;
+}
+
+.funcion-resumen {
+  padding: 20px 0;
+  border-bottom: 1px solid #292929;
+}
+
+.funcion-datos {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.icono-fecha {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 65px;
+  height: 65px;
+  border-radius: 14px;
+  background: #242424;
+  font-size: 24px;
+}
+
+.funcion-datos > div:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.funcion-datos strong {
+  font-size: 17px;
+}
+
+.funcion-datos span {
+  color: #999;
+  font-size: 15px;
+}
+
+.resumen-footer {
+  box-sizing: border-box;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  height: 80px;
+  padding: 20px 30px;
+  background: #242424;
+}
+
+.total {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.total span {
+  color: #999;
+  font-size: 13px;
+}
+
+.total strong {
+  font-size: 20px;
+}
+
+.btn-continuar {
+  padding: 14px 25px;
+  border: none;
+  background: #ed1018;
+  color: white;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+  transition: background 0.2s, opacity 0.2s;
+}
+
+.btn-continuar:hover:not(:disabled) {
+  background: #c90d14;
+}
+
+.btn-continuar:disabled {
+  background: #333;
+  color: #777;
+  cursor: not-allowed;
+}
+
+@media (max-width: 900px) {
+  .compra-container {
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+  }
+
+  .compra-contenido {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .entradas {
+    padding: 35px 25px;
+    overflow: visible;
+  }
+
+  .tipo-entrada {
+    max-width: none;
+  }
+
+  .resumen {
+    height: 400px;
+    padding-bottom: 120px;
+    border-top: 1px solid #292929;
+    border-left: none;
+  }
+
+  .resumen-footer {
+    position: absolute;
+  }
+}
+
+@media (max-width: 600px) {
+  .compra-header {
+    height: 80px;
+  }
+
+  .btn-volver,
+  .btn-cerrar {
+    width: 42px;
+    height: 42px;
+  }
+
+  .btn-volver {
+    left: 15px;
+  }
+
+  .btn-cerrar {
+    right: 15px;
+  }
+
+  .compra-contenido {
+    min-height: calc(100vh - 80px);
+  }
+
+  .entradas {
+    padding: 30px 15px;
+  }
+
+  .entradas > h2 {
+    font-size: 27px;
+  }
+
+  .tipo-entrada {
+    height: 100px;
+    padding: 18px;
+  }
+
+  .cantidad {
+    gap: 10px;
+  }
+
+  .cantidad button {
+    width: 34px;
+    height: 34px;
+  }
+
+  .resumen {
+    height: 400px;
+    padding: 30px 15px 120px;
+  }
+
+  .resumen h2 {
+    font-size: 27px;
+  }
+
+  .resumen-footer {
+    padding: 20px 15px;
+  }
+}

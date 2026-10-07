@@ -1,0 +1,183 @@
+.peliculas-container {
+    padding: 25px;
+}
+
+
+/* =========================
+   ENCABEZADO
+========================= */
+
+.peliculas-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 25px;
+}
+
+.peliculas-header h2 {
+    margin: 0;
+    font-size: 30px;
+}
+
+.peliculas-header p {
+    margin: 6px 0;
+    color: #aaa;
+}
+
+
+/* =========================
+   BOTÓN NUEVA PELÍCULA
+========================= */
+
+.btn-nueva {
+    background: #e50914;
+    color: white;
+
+    border: none;
+    padding: 14px 22px;
+
+    border-radius: 8px;
+
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn-nueva:hover {
+    background: #b20710;
+}
+
+
+/* =========================
+   LISTA
+========================= */
+
+.peliculas-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.pelicula-item {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 20px;
+
+    background: #222;
+
+    border: 1px solid #333;
+    border-radius: 10px;
+
+    padding: 18px;
+}
+
+.pelicula-item img {
+    width: 140px;
+    height: 200px;
+
+    object-fit: cover;
+
+    border-radius: 8px;
+
+    flex-shrink: 0;
+}
+
+.pelicula-info {
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+.pelicula-info h3 {
+    margin: 0 0 5px;
+}
+
+.pelicula-info p {
+    margin: 0;
+
+    color: #aaa;
+}
+
+.pelicula-info span {
+    color: #ddd;
+}
+
+
+/* =========================
+   ACCIONES
+========================= */
+
+.pelicula-acciones {
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 15px;
+}
+
+.btn-editar,
+.btn-estado {
+    border: none;
+
+    padding: 9px 14px;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    color: white;
+
+    font-size: 14px;
+}
+
+.btn-editar {
+    background: #333;
+}
+
+.btn-editar:hover {
+    background: #444;
+}
+
+.btn-estado {
+    background: #7a1b1b;
+}
+
+.btn-estado:hover {
+    background: #a52222;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 700px) {
+
+    .peliculas-container {
+        padding: 15px;
+    }
+
+    .peliculas-header {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 15px;
+    }
+
+    .btn-nueva {
+        width: 100%;
+    }
+
+    .pelicula-item {
+        flex-direction: column;
+    }
+
+    .pelicula-item img {
+        width: 120px;
+        height: 170px;
+    }
+
+}

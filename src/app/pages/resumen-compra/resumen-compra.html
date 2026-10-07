@@ -1,0 +1,275 @@
+<div class="resumen-container">
+
+  <header class="resumen-header">
+    <h1>Resumen de compra</h1>
+    <p>Revisá tu compra antes de continuar</p>
+  </header>
+
+  <main class="resumen-contenido">
+
+    <section
+      class="pelicula"
+      *ngIf="pelicula() as pelicula">
+
+      <img
+        [src]="pelicula.imagen"
+        [alt]="pelicula.nombre">
+
+      <div>
+        <h2>{{ pelicula.nombre }}</h2>
+
+        <p *ngIf="funcion() as funcion">
+          {{ funcion.fecha }}
+          ·
+          {{ funcion.hora_de_inicio }}
+          ·
+          {{ funcion.formato }}
+          ·
+          {{ funcion.idioma }}
+        </p>
+      </div>
+
+    </section>
+
+    <section class="resumen-seccion">
+
+      <h2>Entradas</h2>
+
+      <div
+        class="resumen-fila"
+        *ngIf="cantidadMenores() > 0">
+
+        <span>
+          Menor × {{ cantidadMenores() }}
+        </span>
+
+        <strong>
+          ${{ cantidadMenores() * precioMenor() | number:'1.0-0' }}
+        </strong>
+
+      </div>
+
+      <div
+        class="resumen-fila"
+        *ngIf="cantidadAdultos() > 0">
+
+        <span>
+          Adulto × {{ cantidadAdultos() }}
+        </span>
+
+        <strong>
+          ${{ cantidadAdultos() * precioAdulto() | number:'1.0-0' }}
+        </strong>
+
+      </div>
+
+      <div
+        class="resumen-fila"
+        *ngIf="cantidadMayores() > 0">
+
+        <span>
+          Mayor × {{ cantidadMayores() }}
+        </span>
+
+        <strong>
+          ${{ cantidadMayores() * precioMayor() | number:'1.0-0' }}
+        </strong>
+
+      </div>
+
+      <div class="resumen-fila">
+
+        <span>
+          {{ cantidadEntradas() }} entradas
+        </span>
+
+        <strong>
+          ${{ totalEntradas() | number:'1.0-0' }}
+        </strong>
+
+      </div>
+
+      <div class="resumen-fila">
+
+        <span>Butacas</span>
+
+        <span>
+          <ng-container
+            *ngFor="let butaca of butacas(); let ultima = last">
+
+            {{ butaca.fila }}{{ butaca.numero }}
+
+            <span *ngIf="!ultima">, </span>
+
+          </ng-container>
+        </span>
+
+      </div>
+
+    </section>
+
+    <section
+      class="resumen-seccion"
+      *ngIf="productos().length > 0">
+
+      <h2>Candy Bar</h2>
+
+      <div
+        class="resumen-fila"
+        *ngFor="let producto of productos()">
+
+        <span>
+          {{ producto.nombre }} × {{ producto.cantidad }}
+        </span>
+
+        <strong>
+          ${{ producto.precio * producto.cantidad | number:'1.0-0' }}
+        </strong>
+
+      </div>
+
+      <div class="resumen-fila subtotal">
+
+        <span>
+          Subtotal Candy Bar
+        </span>
+
+        <strong>
+          ${{ totalProductos() | number:'1.0-0' }}
+        </strong>
+
+      </div>
+
+    </section>
+
+    <section
+      class="resumen-seccion"
+      *ngIf="entradasCreadas().length > 0">
+
+      <h2>Tus entradas</h2>
+
+      <div class="entradas-grid">
+
+        <div
+          class="entrada-qr"
+          *ngFor="let entrada of entradasCreadas()">
+
+          <div class="entrada-info">
+
+            <strong>
+              Entrada #{{ entrada.id }}
+            </strong>
+
+            <p>
+              Butaca:
+              {{ entrada.fila }}{{ entrada.numero }}
+            </p>
+
+            <p>
+              Tipo:
+              {{ entrada.tipo }}
+            </p>
+
+            <p>
+              Precio:
+              ${{ entrada.precio | number:'1.0-0' }}
+            </p>
+
+          </div>
+
+          <img
+            [src]="
+              'https://api.qrserver.com/v1/create-qr-code/?size=100x100&data='
+              + entrada.codigo_qr
+            "
+            alt="Código QR de la entrada">
+
+        </div>
+
+      </div>
+
+      <button
+        type="button"
+        class="btn-pagar"
+        (click)="descargarPdf()">
+
+        DESCARGAR ENTRADAS PDF
+
+      </button>
+
+    </section>
+
+    <section class="total-compra">
+
+      <div class="resumen-fila">
+
+        <span>
+          Subtotal
+        </span>
+
+        <strong>
+          ${{ subtotalCompra() | number:'1.0-0' }}
+        </strong>
+
+      </div>
+
+      <div
+        class="resumen-fila descuento"
+        *ngIf="porcentajeDescuento() > 0">
+
+        <span>
+          Descuento {{ porcentajeDescuento() }}%
+        </span>
+
+        <strong>
+          -${{ montoDescuento() | number:'1.0-0' }}
+        </strong>
+
+      </div>
+
+      <div class="total">
+
+        <span>
+          Total
+        </span>
+
+        <strong>
+          ${{ totalCompra() | number:'1.0-0' }}
+        </strong>
+
+      </div>
+
+    </section>
+
+    <div
+      class="acciones"
+      *ngIf="entradasCreadas().length === 0">
+
+      <button
+        type="button"
+        class="btn-volver"
+        (click)="volver()">
+
+        VOLVER
+
+      </button>
+
+      <button
+        type="button"
+        class="btn-pagar"
+        (click)="continuarAlPago()"
+        [disabled]="procesandoCompra()">
+
+        {{
+          procesandoCompra()
+            ? 'PROCESANDO...'
+            : 'CONTINUAR AL PAGO'
+        }}
+
+      </button>
+
+    </div>
+
+  </main>
+
+</div>

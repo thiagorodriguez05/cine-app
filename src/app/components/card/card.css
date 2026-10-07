@@ -1,0 +1,160 @@
+/* =========================
+   TARJETA
+========================= */
+
+.pelicula-card {
+    background: #222;
+    border: 1px solid #333;
+    border-radius: 8px;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+
+    transition:
+        transform 0.2s,
+        border-color 0.2s;
+}
+
+.pelicula-card:hover {
+    transform: translateY(-4px);
+    border-color: #555;
+}
+
+
+/* =========================
+   IMAGEN / PÓSTER
+========================= */
+
+.pelicula-card img {
+    width: 100%;
+    height: 320px;
+
+    object-fit: contain;
+    display: block;
+
+    background: #111;
+}
+
+
+/* =========================
+   INFORMACIÓN
+========================= */
+
+.pelicula-info {
+    padding: 14px;
+
+    display: flex;
+    flex-direction: column;
+
+    flex: 1;
+}
+
+.pelicula-info h3 {
+    margin: 0 0 10px;
+
+    font-size: 18px;
+    line-height: 1.2;
+
+    min-height: 43px;
+}
+
+.pelicula-datos {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: auto;
+}
+
+.pelicula-datos span {
+    color: #ddd;
+    font-size: 14px;
+}
+
+.pelicula-datos span + span {
+    padding-left: 12px;
+    border-left: 1px solid #555;
+}
+
+.pelicula-info span {
+    color: #ddd;
+    font-size: 14px;
+}
+
+
+/* =========================
+   BOTÓN
+========================= */
+
+.pelicula-info button {
+    width: 100%;
+
+    margin-top: 14px;
+    padding: 10px;
+
+    background: #e50914;
+    color: white;
+
+    border: none;
+    border-radius: 6px;
+
+    font-size: 14px;
+
+    cursor: pointer;
+}
+
+.pelicula-info button:hover {
+    background: #b20710;
+}
+
+
+/* =========================
+   TABLETS
+========================= */
+
+@media (max-width: 900px) {
+
+    .pelicula-card img {
+        height: 290px;
+    }
+
+}
+
+
+/* =========================
+   CELULARES
+========================= */
+
+@media (max-width: 650px) {
+
+    .pelicula-card img {
+        height: 240px;
+    }
+
+    .pelicula-info {
+        padding: 12px;
+    }
+
+    .pelicula-info h3 {
+        font-size: 16px;
+        min-height: 38px;
+    }
+
+    .pelicula-info span {
+        font-size: 13px;
+    }
+
+}
+
+
+/* =========================
+   CELULARES PEQUEÑOS
+========================= */
+
+@media (max-width: 450px) {
+
+    .pelicula-card img {
+        height: 340px;
+    }
+
+}

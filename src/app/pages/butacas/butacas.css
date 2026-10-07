@@ -1,0 +1,309 @@
+.butacas-container {
+  min-height: 100vh;
+  padding: 20px 25px 60px;
+  background: #111;
+  color: white;
+  overflow-x: auto;
+}
+
+.butacas-header {
+  margin-bottom: 18px;
+}
+
+.butacas-header h2 {
+  margin: 0 0 5px;
+  font-size: 26px;
+}
+
+.butacas-header p {
+  margin: 0;
+  color: #aaa;
+  font-size: 14px;
+}
+
+.pantalla {
+  width: 65%;
+  margin: 0 auto 25px;
+  padding: 8px;
+  text-align: center;
+  background: #333;
+  border-radius: 0 0 40px 40px;
+  color: #ddd;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.mapa {
+  display: flex;
+  flex-direction: column;
+  min-width: 850px;
+  gap: 5px;
+  padding: 5px 0;
+  background: #181818;
+}
+
+.fila {
+  display: grid;
+
+  /*
+   * letra | izquierda | centro | derecha
+   */
+  grid-template-columns:
+    25px
+    100px
+    286px
+    100px;
+
+  justify-content: center;
+  align-items: center;
+
+  column-gap: 18px;
+
+  min-height: 35px;
+}
+
+.fila-letra {
+  color: #aaa;
+  font-weight: bold;
+  text-align: center;
+  font-size: 13px;
+}
+
+.bloque {
+  display: grid;
+  grid-template-columns: repeat(4, 25px);
+  justify-content: center;
+  gap: 4px;
+}
+
+.bloque-chico {
+  grid-template-columns: repeat(2, 25px);
+}
+
+.bloque-central {
+  display: grid;
+  grid-template-columns: repeat(10, 25px);
+  justify-content: center;
+  gap: 4px;
+}
+
+.butaca {
+  width: 25px;
+  height: 25px;
+  padding: 0;
+
+  border: none;
+  border-radius: 5px;
+
+  background: #555;
+  color: white;
+
+  cursor: pointer;
+
+  font-size: 9px;
+
+  transition:
+    transform 0.15s ease,
+    background 0.15s ease;
+}
+
+.butaca:hover {
+  transform: scale(1.08);
+}
+
+.butaca.accesible {
+  background: #1976d2;
+}
+
+.butaca.vip {
+  background: #c58a00;
+}
+
+.butaca.seleccionada {
+  background: #ed1018;
+  transform: scale(1.08);
+}
+
+.butaca.ocupada {
+  background: #222;
+  color: #777;
+
+  cursor: not-allowed;
+
+  opacity: 0.7;
+
+  position: relative;
+}
+
+.butaca.ocupada::after {
+  content: '✕';
+
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  font-size: 14px;
+  font-weight: bold;
+
+  color: #999;
+}
+
+.butaca.ocupada:hover {
+  transform: none;
+}
+
+.leyenda {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 18px;
+
+  margin-top: 25px;
+  padding-top: 15px;
+
+  border-top: 1px solid #333;
+
+  color: #bbb;
+  font-size: 12px;
+}
+
+.leyenda > div {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.leyenda-color {
+  display: inline-block;
+
+  width: 12px;
+  height: 12px;
+
+  border-radius: 3px;
+}
+
+.leyenda-color.normal {
+  background: #555;
+}
+
+.leyenda-color.accesible {
+  background: #1976d2;
+}
+
+.leyenda-color.vip {
+  background: #c58a00;
+}
+
+.leyenda-color.seleccionada {
+  background: #ed1018;
+}
+
+.leyenda-color.ocupada {
+  background: #222;
+  border: 1px solid #555;
+}
+
+.acciones {
+  display: flex;
+  justify-content: center;
+
+  margin-top: 25px;
+}
+
+.btn-continuar {
+  min-width: 170px;
+
+  padding: 12px 22px;
+
+  border: none;
+  border-radius: 7px;
+
+  background: #ed1018;
+  color: white;
+
+  cursor: pointer;
+
+  font-size: 14px;
+  font-weight: bold;
+
+  transition:
+    background 0.2s,
+    opacity 0.2s;
+}
+
+.btn-continuar:hover:not(:disabled) {
+  background: #c90d14;
+}
+
+.btn-continuar:disabled {
+  background: #333;
+  color: #777;
+  cursor: not-allowed;
+}
+
+@media (max-width: 900px) {
+
+  .butacas-container {
+    overflow-x: auto;
+  }
+
+  .mapa {
+    min-width: 850px;
+  }
+
+  .acciones {
+    min-width: 850px;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .butacas-container {
+    padding: 15px;
+  }
+
+  .butacas-header h2 {
+    font-size: 23px;
+  }
+
+  .pantalla {
+    width: 70%;
+  }
+
+  .mapa {
+    min-width: 800px;
+  }
+
+  .fila {
+    column-gap: 12px;
+  }
+
+  .butaca {
+    width: 23px;
+    height: 23px;
+    font-size: 8px;
+  }
+
+  .bloque {
+    grid-template-columns: repeat(4, 23px);
+  }
+
+  .bloque-chico {
+    grid-template-columns: repeat(2, 23px);
+  }
+
+  .bloque-central {
+    grid-template-columns: repeat(10, 23px);
+  }
+
+  .leyenda {
+    justify-content: flex-start;
+  }
+}

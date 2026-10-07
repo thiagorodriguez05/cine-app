@@ -1,0 +1,112 @@
+<div class="admin-container">
+
+    <!-- SIDEBAR -->
+    <aside class="admin-sidebar">
+
+        <div class="sidebar-logo">
+            <span>🎬</span>
+            <h2>CINE</h2>
+        </div>
+
+        <nav class="sidebar-menu">
+
+            <p class="menu-title">GENERAL</p>
+
+            <a routerLink="/admin" routerLinkActive="active"
+               [routerLinkActiveOptions]="{ exact: true }">
+                🏠 Inicio
+            </a>
+
+            <p class="menu-title">GESTIÓN</p>
+
+            <a routerLink="/admin/peliculas" routerLinkActive="active">
+                🎬 Películas
+            </a>
+
+            <a routerLink="/admin/generos" routerLinkActive="active">
+                🎭 Géneros
+            </a>
+
+            <a routerLink="/admin/salas" routerLinkActive="active">
+                🏢 Salas
+            </a>
+
+            <a routerLink="/admin/funciones" routerLinkActive="active">
+                🎞️ Funciones
+            </a>
+
+            <p class="menu-title">CANDY BAR</p>
+
+            <a routerLink="/admin/candy-bar/productos" routerLinkActive="active">
+                🍿 Productos
+            </a>
+
+            <a routerLink="/admin/candy-bar/categorias" routerLinkActive="active">
+                📂 Categorías
+            </a>
+
+            <a routerLink="/admin/candy-bar/combos" routerLinkActive="active">
+                🥤 Combos
+            </a>
+
+            <p class="menu-title">PROMOCIONES</p>
+
+            <a routerLink="/admin/cupones" routerLinkActive="active">
+                🎟️ Cupones
+            </a>
+
+            <a routerLink="/admin/recompensas" routerLinkActive="active">
+                ⭐ Recompensas
+            </a>
+
+            <p class="menu-title">INFORMACIÓN</p>
+
+            <a routerLink="/admin/reportes" routerLinkActive="active">
+                📊 Reportes
+            </a>
+
+        </nav>
+
+        <div class="sidebar-footer">
+            <button>
+                🚪 Cerrar sesión
+            </button>
+        </div>
+
+    </aside>
+
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="admin-main">
+
+        <header class="admin-topbar">
+
+            <div>
+                <h1>Panel de Administración</h1>
+                <p>Gestioná el sistema del cine</p>
+            </div>
+
+            <div class="admin-user">
+                <div class="user-avatar">
+                    A
+                </div>
+
+                <div>
+                    <strong>Administrador</strong>
+                    <span>Administrador</span>
+                </div>
+            </div>
+
+        </header>
+
+
+        <!-- CONTENIDO DE LAS RUTAS -->
+        <section class="admin-content">
+
+            <router-outlet></router-outlet>
+
+        </section>
+
+    </main>
+
+</div>

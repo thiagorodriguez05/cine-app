@@ -1,0 +1,340 @@
+<div class="combos-container">
+
+  <!-- =========================
+       HEADER
+  ========================== -->
+
+  <header class="combos-header">
+
+    <div>
+      <h1>Combos</h1>
+
+      <p>
+        Administrá los combos del Candy Bar
+      </p>
+    </div>
+
+    <button
+      type="button"
+      class="btn-crear"
+      (click)="abrirFormulario()"
+    >
+      + CREAR COMBO
+    </button>
+
+  </header>
+
+
+  <!-- =========================
+       FORMULARIO CREAR COMBO
+  ========================== -->
+
+  <section
+    class="formulario-combo"
+    *ngIf="mostrarFormulario"
+  >
+
+    <h2>Crear combo</h2>
+
+
+    <!-- NOMBRE -->
+
+    <div class="campo">
+
+      <label>
+        Nombre
+      </label>
+
+      <input
+        type="text"
+        placeholder="Nombre del combo"
+        [(ngModel)]="nombreCombo"
+      >
+
+    </div>
+
+
+    <!-- DESCRIPCIÓN -->
+
+    <div class="campo">
+
+      <label>
+        Descripción
+      </label>
+
+      <input
+        type="text"
+        placeholder="Descripción del combo"
+        [(ngModel)]="descripcionCombo"
+      >
+
+    </div>
+
+
+    <!-- IMAGEN -->
+
+    <div class="campo">
+
+      <label>
+        Imagen del combo
+      </label>
+
+      <input
+        type="file"
+        accept="image/*"
+        (change)="seleccionarImagen($event)"
+      >
+
+    </div>
+
+
+    <!-- DESCUENTO -->
+
+    <p class="descuento-info">
+
+      El precio del combo se calcula automáticamente
+      aplicando un descuento del
+      {{ descuentoCombo }}%.
+
+    </p>
+
+
+    <!-- PRODUCTOS -->
+
+    <h3>
+      Productos del combo
+    </h3>
+
+
+    <div
+      class="producto-seleccion"
+      *ngFor="let producto of productos()"
+    >
+
+      <!-- NOMBRE -->
+
+      <span>
+        {{ producto.nombre }}
+      </span>
+
+
+      <!-- PRECIO -->
+
+      <span>
+        ${{ producto.precio | number:'1.0-0' }}
+      </span>
+
+
+      <!-- CANTIDAD -->
+
+      <input
+        type="number"
+        min="0"
+        [(ngModel)]="cantidades[producto.id]"
+      >
+
+    </div>
+
+
+    <!-- =========================
+         PRECIO
+    ========================== -->
+
+    <div class="precio-combo">
+
+
+      <!-- SUBTOTAL -->
+
+      <div class="precio-fila">
+
+        <span>
+          Subtotal:
+        </span>
+
+        <strong>
+          ${{ calcularSubtotal() | number:'1.0-0' }}
+        </strong>
+
+      </div>
+
+
+      <!-- DESCUENTO -->
+
+      <div class="precio-fila">
+
+        <span>
+          Descuento {{ descuentoCombo }}%:
+        </span>
+
+        <strong>
+          -${{
+            calcularSubtotal() * descuentoCombo / 100
+            | number:'1.0-0'
+          }}
+        </strong>
+
+      </div>
+
+
+      <!-- PRECIO FINAL -->
+
+      <div class="precio-final">
+
+        <span>
+          Precio del combo:
+        </span>
+
+        <strong>
+          ${{ calcularPrecioCombo() | number:'1.0-0' }}
+        </strong>
+
+      </div>
+
+    </div>
+
+
+    <!-- =========================
+         BOTONES
+    ========================== -->
+
+    <div class="formulario-acciones">
+
+      <!-- CANCELAR -->
+
+      <button
+        type="button"
+        class="btn-cancelar"
+        (click)="cerrarFormulario()"
+      >
+        CANCELAR
+      </button>
+
+
+      <!-- GUARDAR -->
+
+      <button
+        type="button"
+        class="btn-guardar"
+        (click)="guardarCombo()"
+      >
+        GUARDAR COMBO
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       LISTA DE COMBOS
+  ========================== -->
+
+  <section class="combos-lista">
+
+
+    <!-- COMBO -->
+
+    <div
+      class="combo-card"
+      *ngFor="let combo of combos()"
+    >
+
+      <!-- IMAGEN DEL COMBO -->
+
+      <img
+        *ngIf="combo.imagen"
+        [src]="combo.imagen"
+        [alt]="combo.nombre"
+        class="combo-imagen"
+      >
+
+
+      <!-- INFORMACIÓN -->
+
+      <div class="combo-info">
+
+        <h2>
+          {{ combo.nombre }}
+        </h2>
+
+        <p>
+          {{ combo.descripcion }}
+        </p>
+
+        <strong>
+          ${{ combo.precio | number:'1.0-0' }}
+        </strong>
+
+      </div>
+
+
+      <!-- ACCIONES -->
+
+      <div class="combo-acciones">
+
+        <button
+          type="button"
+          class="btn-editar"
+        >
+          EDITAR
+        </button>
+
+
+        <button
+          type="button"
+          class="btn-desactivar"
+          (click)="desactivarCombo(combo)"
+        >
+          DESACTIVAR
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- SIN COMBOS -->
+
+    <p
+      class="sin-combos"
+      *ngIf="combos().length === 0"
+    >
+      No hay combos creados.
+    </p>
+
+  </section>
+
+
+  <!-- =========================
+       PRODUCTOS DISPONIBLES
+  ========================== -->
+
+  <section class="productos-disponibles">
+
+    <h2>
+      Productos disponibles
+    </h2>
+
+
+    <div class="productos-grid">
+
+      <div
+        class="producto"
+        *ngFor="let producto of productos()"
+      >
+
+        <span>
+          {{ producto.nombre }}
+        </span>
+
+        <strong>
+          ${{ producto.precio | number:'1.0-0' }}
+        </strong>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</div>

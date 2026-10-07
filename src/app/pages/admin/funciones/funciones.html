@@ -1,0 +1,103 @@
+<div class="funciones-container">
+
+  <div class="funciones-header">
+
+    <div>
+      <h2>Funciones</h2>
+
+      <p>
+        Administrá la programación del cine
+      </p>
+    </div>
+
+    <button
+      *ngIf="!mostrarPropuesta"
+      type="button"
+      class="btn-nueva"
+      (click)="abrirModal()">
+      + Nueva programación
+    </button>
+
+  </div>
+
+  <div
+    class="funciones-lista"
+    *ngIf="!mostrarPropuesta">
+
+    <div
+      class="funcion-item"
+      *ngFor="let funcion of funciones()">
+
+      <div class="funcion-info">
+
+        <h3>
+          Función #{{ funcion.id }}
+        </h3>
+
+        <p>
+          Fecha:
+          <span>
+            {{ funcion.fecha }}
+          </span>
+        </p>
+
+        <p>
+          Horario:
+          <span>
+            {{ funcion.hora_de_inicio }}
+            -
+            {{ funcion.hora_de_fin }}
+          </span>
+        </p>
+
+        <p>
+          Sala:
+          <span>
+            {{ funcion.sala_id }}
+          </span>
+        </p>
+
+        <p>
+          Formato:
+          <span>
+            {{ funcion.formato }}
+          </span>
+        </p>
+
+        <p>
+          Idioma:
+          <span>
+            {{ funcion.idioma }}
+          </span>
+        </p>
+
+        <p>
+          Precio:
+          <span>
+            ${{ funcion.precio_base }}
+          </span>
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <app-programacion-propuesta
+    *ngIf="mostrarPropuesta"
+    [propuesta]="propuesta()"
+    (volver)="cerrarPropuesta()"
+    (confirmar)="confirmarProgramacion()">
+  </app-programacion-propuesta>
+
+</div>
+
+<app-funcion-form
+  *ngIf="mostrarModal"
+  [peliculas]="peliculas()"
+  [formatosPorPelicula]="formatosPorPelicula()"
+  [mostrar]="mostrarModal"
+  (guardar)="generarProgramacion($event)"
+  (cancelar)="cerrarModal()">
+</app-funcion-form>

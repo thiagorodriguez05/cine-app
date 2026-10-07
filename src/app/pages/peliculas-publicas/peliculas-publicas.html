@@ -1,0 +1,61 @@
+<app-navbar></app-navbar>
+
+<div class="peliculas-publicas">
+
+  <div class="peliculas-header">
+    <h1>Películas</h1>
+
+    <p>
+      Descubrí nuestras películas disponibles
+    </p>
+  </div>
+
+  <div
+    class="sin-resultados"
+    *ngIf="peliculas().length === 0 && proximamente().length === 0">
+
+    <h2>No encontramos películas</h2>
+
+    <p>
+      Probá buscando con otro nombre.
+    </p>
+
+  </div>
+
+  <!-- PELÍCULAS YA ESTRENADAS -->
+
+  <div
+    class="peliculas-grid"
+    *ngIf="peliculas().length > 0">
+
+    <app-card
+      *ngFor="let pelicula of peliculas()"
+      [pelicula]="pelicula">
+    </app-card>
+
+  </div>
+
+  <!-- PRÓXIMAMENTE -->
+
+  <div
+    class="separador-proximamente"
+    *ngIf="proximamente().length > 0">
+
+    <span>PRÓXIMAMENTE</span>
+
+  </div>
+
+  <!-- PELÍCULAS PRÓXIMAS -->
+
+  <div
+    class="peliculas-grid"
+    *ngIf="proximamente().length > 0">
+
+    <app-card
+      *ngFor="let pelicula of proximamente()"
+      [pelicula]="pelicula">
+    </app-card>
+
+  </div>
+
+</div>

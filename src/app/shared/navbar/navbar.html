@@ -1,0 +1,75 @@
+<nav class="navbar">
+
+    <div class="navbar-logo">
+        <a routerLink="/">
+            <img src="/public/logo-cine.png" alt="CINE">
+        </a>
+    </div>
+
+    <div class="navbar-links">
+
+        <a
+            routerLink="/"
+            routerLinkActive="activo"
+            [routerLinkActiveOptions]="{ exact: true }"
+        >
+            Inicio
+        </a>
+
+        <a
+            routerLink="/peliculas"
+            routerLinkActive="activo"
+        >
+            Películas
+        </a>
+
+        <a
+            routerLink="/candy-bar"
+            routerLinkActive="activo"
+        >
+            Candy Bar
+        </a>
+
+    </div>
+
+    <div class="navbar-search">
+
+        <input
+            type="text"
+            placeholder="Buscar película..."
+            [(ngModel)]="busqueda"
+            (keyup.enter)="buscar()"
+        />
+
+        <button
+            type="button"
+            (click)="buscar()"
+            aria-label="Buscar"
+        >
+            🔍
+        </button>
+
+    </div>
+
+    <div class="navbar-login">
+
+        <a
+            *ngIf="!usuarioLogueado()"
+            routerLink="/login"
+            routerLinkActive="activo"
+        >
+            Iniciar sesión
+        </a>
+
+        <a
+            *ngIf="usuarioLogueado()"
+            routerLink="/mi-cuenta"
+            class="usuario-btn"
+            title="Mi cuenta"
+        >
+            👤
+        </a>
+
+    </div>
+
+</nav>

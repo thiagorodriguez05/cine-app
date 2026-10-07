@@ -1,0 +1,310 @@
+<div class="dashboard">
+
+  <!-- HEADER -->
+  <div class="dashboard-header">
+    <div>
+      <h2>Resumen</h2>
+      <p>Estadísticas generales del cine</p>
+    </div>
+  </div>
+
+
+  <!-- TARJETAS PRINCIPALES -->
+
+  <div class="estadisticas">
+
+    <div class="estadistica">
+      <span class="icono">🛒</span>
+
+      <div>
+        <p>Total de compras</p>
+        <strong>
+          {{ totalCompras() }}
+        </strong>
+      </div>
+    </div>
+
+
+    <div class="estadistica">
+      <span class="icono">💰</span>
+
+      <div>
+        <p>Ingresos</p>
+
+        <strong>
+          ${{ ingresos() | number:'1.0-0' }}
+        </strong>
+      </div>
+    </div>
+
+
+    <div class="estadistica">
+      <span class="icono">🎟️</span>
+
+      <div>
+        <p>Entradas vendidas</p>
+
+        <strong>
+          {{ entradasVendidas() }}
+        </strong>
+      </div>
+    </div>
+
+
+    <div class="estadistica">
+      <span class="icono">🎬</span>
+
+      <div>
+        <p>Película más vista</p>
+
+        <strong class="pelicula-destacada">
+          {{ peliculaMasVista() }}
+        </strong>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- COMPRAS POR DÍA -->
+
+  <div class="grafico-card">
+
+    <div class="grafico-header">
+      <div>
+        <h3>Compras por día</h3>
+        <p>Últimos 7 días</p>
+      </div>
+    </div>
+
+    <div class="grafico">
+
+      <div
+        class="barra-container"
+        *ngFor="let dia of comprasPorDia()"
+      >
+
+        <span class="cantidad">
+          {{ dia.cantidad }}
+        </span>
+
+        <div class="barra-wrapper">
+
+          <div
+            class="barra"
+            [style.height.%]="obtenerAltura(dia.cantidad)"
+          ></div>
+
+        </div>
+
+        <span class="fecha">
+          {{ formatearFechaMostrar(dia.fecha) }}
+        </span>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- DOS GRÁFICOS -->
+
+  <div class="graficos-grid">
+
+
+    <!-- PELÍCULAS MÁS VISTAS -->
+
+    <div class="grafico-card">
+
+      <div class="grafico-header">
+
+        <div>
+          <h3>Películas más vistas</h3>
+          <p>Entradas vendidas por película</p>
+        </div>
+
+      </div>
+
+
+      <div class="grafico">
+
+        <div
+          class="barra-container"
+          *ngFor="let pelicula of peliculasMasVistas().slice(0, 6)"
+        >
+
+          <span class="cantidad">
+            {{ pelicula.cantidad }}
+          </span>
+
+          <div class="barra-wrapper">
+
+            <div
+              class="barra"
+              [style.height.%]="obtenerAlturaPelicula(pelicula.cantidad)"
+            ></div>
+
+          </div>
+
+          <span class="fecha pelicula-label">
+            {{ pelicula.nombre }}
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- INGRESOS POR MES -->
+
+    <div class="grafico-card">
+
+      <div class="grafico-header">
+
+        <div>
+          <h3>Ingresos por mes</h3>
+          <p>Últimos meses registrados</p>
+        </div>
+
+      </div>
+
+
+      <div class="grafico">
+
+        <div
+          class="barra-container"
+          *ngFor="let mes of ingresosPorMes()"
+        >
+
+          <span class="cantidad">
+            ${{ mes.ingresos | number:'1.0-0' }}
+          </span>
+
+          <div class="barra-wrapper">
+
+            <div
+              class="barra"
+              [style.height.%]="obtenerAlturaMes(mes.ingresos)"
+            ></div>
+
+          </div>
+
+          <span class="fecha">
+            {{ mes.mes }}
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- SALAS + MÉTODOS DE PAGO -->
+
+  <div class="graficos-grid">
+
+
+    <!-- SALAS -->
+
+    <div class="grafico-card">
+
+      <div class="grafico-header">
+
+        <div>
+          <h3>Salas más utilizadas</h3>
+          <p>Entradas vendidas por sala</p>
+        </div>
+
+      </div>
+
+
+      <div class="grafico">
+
+        <div
+          class="barra-container"
+          *ngFor="let sala of salasMasUsadas()"
+        >
+
+          <span class="cantidad">
+            {{ sala.cantidad }}
+          </span>
+
+          <div class="barra-wrapper">
+
+            <div
+              class="barra"
+              [style.height.%]="obtenerAlturaSala(sala.cantidad)"
+            ></div>
+
+          </div>
+
+          <span class="fecha">
+            {{ sala.nombre }}
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- MÉTODOS DE PAGO -->
+
+    <div class="grafico-card">
+
+      <div class="grafico-header">
+
+        <div>
+          <h3>Métodos de pago</h3>
+          <p>Compras realizadas</p>
+        </div>
+
+      </div>
+
+
+      <div class="metodos-pago">
+
+        <div
+          class="metodo-pago"
+          *ngFor="let metodo of metodosPago()"
+        >
+
+          <div class="metodo-info">
+
+            <span>
+              {{ metodo.metodo }}
+            </span>
+
+            <strong>
+              {{ metodo.cantidad }}
+            </strong>
+
+          </div>
+
+          <div class="progreso">
+
+            <div
+              class="progreso-barra"
+              [style.width.%]="
+                (metodo.cantidad / totalCompras()) * 100
+              "
+            ></div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

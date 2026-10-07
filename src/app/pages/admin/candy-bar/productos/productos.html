@@ -1,0 +1,128 @@
+<div class="productos-container">
+
+    <div class="productos-header">
+        <div>
+            <h2>Productos</h2>
+            <p>Administrá los productos disponibles en el Candy Bar</p>
+        </div>
+
+        <button
+            class="btn-nuevo"
+            type="button"
+            (click)="abrirFormulario()"
+        >
+            + Nuevo producto
+        </button>
+    </div>
+
+
+    <div class="productos-lista">
+
+        <div
+            class="producto-item"
+            *ngFor="let producto of productos()"
+        >
+
+            <!-- Imagen -->
+            <div class="producto-imagen">
+
+                <img
+                    *ngIf="producto.imagen"
+                    [src]="producto.imagen"
+                    [alt]="producto.nombre"
+                >
+
+                <div
+                    class="sin-imagen"
+                    *ngIf="!producto.imagen"
+                >
+                    🍿
+                </div>
+
+            </div>
+
+
+            <!-- Información -->
+            <div class="producto-info">
+
+                <h3>
+                    {{ producto.nombre }}
+                </h3>
+
+                <p>
+                    {{ obtenerNombreCategoria(producto.categoria_id) }}
+                </p>
+
+                <p class="descripcion">
+                    {{ producto.descripcion }}
+                </p>
+
+                <div class="producto-datos">
+
+                    <span>
+                        ${{ producto.precio }}
+                    </span>
+
+                    <span>
+                        Stock: {{ producto.stock }}
+                    </span>
+
+                </div>
+
+                <span
+                    class="estado"
+                    [class.inactivo]="!producto.estado"
+                >
+                    {{ producto.estado ? 'Activo' : 'Inactivo' }}
+                </span>
+
+            </div>
+
+
+            <!-- Acciones -->
+            <div class="producto-acciones">
+
+                <button
+                    class="btn-editar"
+                    type="button"
+                    (click)="editarProducto(producto)"
+                >
+                    Editar
+                </button>
+
+                <button
+                    *ngIf="producto.estado"
+                    class="btn-desactivar"
+                    type="button"
+                    (click)="desactivarProducto(producto)"
+                >
+                    Desactivar
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Sin productos -->
+    <p
+        class="sin-productos"
+        *ngIf="productos().length === 0"
+    >
+        No hay productos cargados.
+    </p>
+
+
+    <!-- Formulario -->
+    <app-productos-form
+        *ngIf="mostrarFormulario"
+        [categorias]="categorias"
+        [producto]="productoSeleccionado"
+        [editando]="editando"
+        (guardar)="guardarProducto($event)"
+        (cerrar)="cerrarFormulario()"
+    ></app-productos-form>
+
+</div>

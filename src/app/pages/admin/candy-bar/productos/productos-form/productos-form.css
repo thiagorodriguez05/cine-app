@@ -1,0 +1,198 @@
+.form-overlay {
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.7);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    z-index: 1000;
+}
+
+.form-container {
+    width: 100%;
+    max-width: 600px;
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    background: #222;
+    border: 1px solid #333;
+    border-radius: 10px;
+
+    padding: 25px;
+
+    box-sizing: border-box;
+}
+
+
+/* HEADER */
+
+.form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    margin-bottom: 25px;
+}
+
+.form-header h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.form-header p {
+    margin: 6px 0 0;
+    color: #aaa;
+}
+
+.btn-cerrar {
+    background: transparent;
+    border: none;
+
+    color: #aaa;
+
+    font-size: 20px;
+    cursor: pointer;
+
+    padding: 2px 5px;
+}
+
+.btn-cerrar:hover {
+    color: white;
+}
+
+
+/* FORMULARIO */
+
+.producto-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.form-group label {
+    color: #ddd;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+
+    padding: 11px 12px;
+
+    box-sizing: border-box;
+
+    background: #181818;
+    color: white;
+
+    border: 1px solid #444;
+    border-radius: 6px;
+
+    font-family: inherit;
+    font-size: 14px;
+
+    outline: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: #e50914;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.form-group select {
+    cursor: pointer;
+}
+
+
+/* PRECIO Y STOCK */
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+
+/* BOTONES */
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+
+    margin-top: 10px;
+    padding-top: 20px;
+
+    border-top: 1px solid #333;
+}
+
+.form-actions button {
+    padding: 10px 16px;
+
+    border: none;
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    font-size: 14px;
+}
+
+.btn-cancelar {
+    background: #444;
+    color: white;
+}
+
+.btn-cancelar:hover {
+    background: #555;
+}
+
+.btn-guardar {
+    background: #e50914;
+    color: white;
+}
+
+.btn-guardar:hover {
+    background: #b20710;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 600px) {
+
+    .form-container {
+        padding: 20px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .form-actions button {
+        width: 100%;
+    }
+}

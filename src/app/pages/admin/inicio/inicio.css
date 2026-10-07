@@ -1,0 +1,298 @@
+.dashboard {
+  width: 100%;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.dashboard-header {
+  margin-bottom: 18px;
+}
+
+.dashboard-header h2 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.dashboard-header p {
+  margin: 4px 0 0;
+  color: #888;
+  font-size: 14px;
+}
+
+
+/* =========================
+   TARJETAS
+========================= */
+
+.estadisticas {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.estadistica {
+  background: #1c1c1c;
+  border: 1px solid #2d2d2d;
+  border-radius: 10px;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  min-width: 0;
+}
+
+.icono {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #2a2a2a;
+  border-radius: 8px;
+
+  font-size: 19px;
+}
+
+.estadistica p {
+  margin: 0 0 3px;
+  color: #888;
+  font-size: 13px;
+}
+
+.estadistica strong {
+  font-size: 20px;
+}
+
+.pelicula-destacada {
+  display: block;
+  font-size: 15px !important;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+/* =========================
+   CARDS DE GRÁFICOS
+========================= */
+
+.grafico-card {
+  background: #1c1c1c;
+  border: 1px solid #2d2d2d;
+  border-radius: 10px;
+  padding: 18px;
+  margin-bottom: 18px;
+}
+
+.grafico-header h3 {
+  margin: 0;
+  font-size: 17px;
+}
+
+.grafico-header p {
+  margin: 4px 0 15px;
+  color: #888;
+  font-size: 13px;
+}
+
+
+/* =========================
+   GRID
+========================= */
+
+.graficos-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.graficos-grid .grafico-card {
+  margin-bottom: 18px;
+}
+
+
+/* =========================
+   GRÁFICO
+========================= */
+
+.grafico {
+  height: 220px;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+
+  gap: 12px;
+
+  padding: 12px 8px 0;
+
+  border-bottom: 1px solid #333;
+}
+
+.barra-container {
+  height: 100%;
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: 5px;
+
+  min-width: 40px;
+}
+
+.cantidad {
+  color: #aaa;
+  font-size: 11px;
+  text-align: center;
+}
+
+.barra-wrapper {
+  width: 100%;
+  height: 165px;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.barra {
+  width: 42px;
+  max-height: 100%;
+  min-height: 3px;
+
+  background: #e50914;
+
+  border-radius: 5px 5px 0 0;
+
+  transition: height 0.3s ease;
+}
+
+.barra:hover {
+  opacity: 0.8;
+}
+
+
+/* =========================
+   ETIQUETAS
+========================= */
+
+.fecha {
+  color: #999;
+  font-size: 11px;
+
+  text-transform: capitalize;
+  text-align: center;
+
+  max-width: 90px;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pelicula-label {
+  max-width: 90px;
+}
+
+
+/* =========================
+   MÉTODOS DE PAGO
+========================= */
+
+.metodos-pago {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  padding-top: 5px;
+}
+
+.metodo-pago {
+  width: 100%;
+}
+
+.metodo-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 6px;
+
+  color: #aaa;
+  font-size: 13px;
+}
+
+.metodo-info strong {
+  color: white;
+  font-size: 14px;
+}
+
+.progreso {
+  width: 100%;
+  height: 7px;
+
+  background: #2a2a2a;
+
+  border-radius: 10px;
+
+  overflow: hidden;
+}
+
+.progreso-barra {
+  height: 100%;
+
+  background: #e50914;
+
+  border-radius: 10px;
+
+  transition: width 0.3s ease;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1100px) {
+
+  .estadisticas {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .graficos-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+@media (max-width: 700px) {
+
+  .estadisticas {
+    grid-template-columns: 1fr;
+  }
+
+  .grafico {
+    height: 200px;
+    gap: 6px;
+  }
+
+  .barra {
+    width: 30px;
+  }
+
+  .grafico-card {
+    padding: 15px;
+  }
+
+}

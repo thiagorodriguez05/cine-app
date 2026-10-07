@@ -1,0 +1,354 @@
+<div class="butacas-container">
+
+  <div class="butacas-header">
+    <h2>Mapa de butacas</h2>
+
+    <p>
+      Seleccionadas:
+      {{ butacasSeleccionadas().length }}
+      /
+      {{ cantidadEntradas() }}
+    </p>
+  </div>
+
+  <div class="pantalla">
+    PANTALLA
+  </div>
+
+  <div class="mapa">
+
+    <div
+      class="fila"
+      *ngFor="let letra of 'ABCDEFGHIJKLMNOPQRST'.split('')"
+    >
+
+      <!-- LETRA -->
+      <div class="fila-letra">
+        {{ letra }}
+      </div>
+
+
+      <!-- ===================================== -->
+      <!-- FILAS J Y K: 2 / 10 / 2 -->
+      <!-- ===================================== -->
+
+      <ng-container
+        *ngIf="letra === 'J' || letra === 'K'; else filaNormal"
+      >
+
+        <!-- IZQUIERDA: 1 - 2 -->
+
+        <div class="bloque bloque-chico">
+
+          <button
+            *ngFor="let butaca of butacas()"
+            type="button"
+            class="butaca"
+
+            [class.accesible]="
+              butaca.tipo === 'ACCESIBLE'
+            "
+
+            [class.vip]="
+              butaca.tipo === 'VIP'
+            "
+
+            [class.seleccionada]="
+              estaSeleccionada(butaca.id)
+            "
+
+            [class.ocupada]="
+              estaOcupada(butaca.id)
+            "
+
+            [hidden]="
+              butaca.fila !== letra ||
+              butaca.numero < 1 ||
+              butaca.numero > 2
+            "
+
+            (click)="
+              seleccionarButaca(butaca.id)
+            "
+          >
+            {{ butaca.numero }}
+          </button>
+
+        </div>
+
+
+        <!-- CENTRO: 3 - 12 -->
+
+        <div class="bloque bloque-central">
+
+          <button
+            *ngFor="let butaca of butacas()"
+            type="button"
+            class="butaca"
+
+            [class.accesible]="
+              butaca.tipo === 'ACCESIBLE'
+            "
+
+            [class.vip]="
+              butaca.tipo === 'VIP'
+            "
+
+            [class.seleccionada]="
+              estaSeleccionada(butaca.id)
+            "
+
+            [class.ocupada]="
+              estaOcupada(butaca.id)
+            "
+
+            [hidden]="
+              butaca.fila !== letra ||
+              butaca.numero < 3 ||
+              butaca.numero > 12
+            "
+
+            (click)="
+              seleccionarButaca(butaca.id)
+            "
+          >
+            {{ butaca.numero }}
+          </button>
+
+        </div>
+
+
+        <!-- DERECHA: 13 - 14 -->
+
+        <div class="bloque bloque-chico">
+
+          <button
+            *ngFor="let butaca of butacas()"
+            type="button"
+            class="butaca"
+
+            [class.accesible]="
+              butaca.tipo === 'ACCESIBLE'
+            "
+
+            [class.vip]="
+              butaca.tipo === 'VIP'
+            "
+
+            [class.seleccionada]="
+              estaSeleccionada(butaca.id)
+            "
+
+            [class.ocupada]="
+              estaOcupada(butaca.id)
+            "
+
+            [hidden]="
+              butaca.fila !== letra ||
+              butaca.numero < 13 ||
+              butaca.numero > 14
+            "
+
+            (click)="
+              seleccionarButaca(butaca.id)
+            "
+          >
+            {{ butaca.numero }}
+          </button>
+
+        </div>
+
+      </ng-container>
+
+
+      <!-- ===================================== -->
+      <!-- RESTO: 4 / 20 / 4 -->
+      <!-- ===================================== -->
+
+      <ng-template #filaNormal>
+
+        <!-- IZQUIERDA: 1 - 4 -->
+
+        <div class="bloque">
+
+          <button
+            *ngFor="let butaca of butacas()"
+            type="button"
+            class="butaca"
+
+            [class.accesible]="
+              butaca.tipo === 'ACCESIBLE'
+            "
+
+            [class.vip]="
+              butaca.tipo === 'VIP'
+            "
+
+            [class.seleccionada]="
+              estaSeleccionada(butaca.id)
+            "
+
+            [class.ocupada]="
+              estaOcupada(butaca.id)
+            "
+
+            [hidden]="
+              butaca.fila !== letra ||
+              butaca.numero < 1 ||
+              butaca.numero > 4
+            "
+
+            (click)="
+              seleccionarButaca(butaca.id)
+            "
+          >
+            {{ butaca.numero }}
+          </button>
+
+        </div>
+
+
+        <!-- CENTRO: 5 - 24 -->
+
+        <div class="bloque bloque-central">
+
+          <button
+            *ngFor="let butaca of butacas()"
+            type="button"
+            class="butaca"
+
+            [class.accesible]="
+              butaca.tipo === 'ACCESIBLE'
+            "
+
+            [class.vip]="
+              butaca.tipo === 'VIP'
+            "
+
+            [class.seleccionada]="
+              estaSeleccionada(butaca.id)
+            "
+
+            [class.ocupada]="
+              estaOcupada(butaca.id)
+            "
+
+            [hidden]="
+              butaca.fila !== letra ||
+              butaca.numero < 5 ||
+              butaca.numero > 24
+            "
+
+            (click)="
+              seleccionarButaca(butaca.id)
+            "
+          >
+            {{ butaca.numero }}
+          </button>
+
+        </div>
+
+
+        <!-- DERECHA: 25 - 28 -->
+
+        <div class="bloque">
+
+          <button
+            *ngFor="let butaca of butacas()"
+            type="button"
+            class="butaca"
+
+            [class.accesible]="
+              butaca.tipo === 'ACCESIBLE'
+            "
+
+            [class.vip]="
+              butaca.tipo === 'VIP'
+            "
+
+            [class.seleccionada]="
+              estaSeleccionada(butaca.id)
+            "
+
+            [class.ocupada]="
+              estaOcupada(butaca.id)
+            "
+
+            [hidden]="
+              butaca.fila !== letra ||
+              butaca.numero < 25 ||
+              butaca.numero > 28
+            "
+
+            (click)="
+              seleccionarButaca(butaca.id)
+            "
+          >
+            {{ butaca.numero }}
+          </button>
+
+        </div>
+
+      </ng-template>
+
+    </div>
+
+  </div>
+
+
+  <!-- ===================================== -->
+  <!-- LEYENDA -->
+  <!-- ===================================== -->
+
+  <div class="leyenda">
+
+    <div>
+      <span class="leyenda-color normal"></span>
+      Normal
+    </div>
+
+    <div>
+      <span class="leyenda-color accesible"></span>
+      Accesible
+    </div>
+
+    <div>
+      <span class="leyenda-color vip"></span>
+      VIP
+    </div>
+
+    <div>
+      <span class="leyenda-color seleccionada"></span>
+      Seleccionada
+    </div>
+
+    <div>
+      <span class="leyenda-color ocupada"></span>
+      Ocupada
+    </div>
+
+  </div>
+
+
+  <!-- ===================================== -->
+  <!-- CONTINUAR -->
+  <!-- ===================================== -->
+
+  <div class="acciones">
+
+    <button
+      type="button"
+      class="btn-continuar"
+
+      [disabled]="
+        butacasSeleccionadas().length !== cantidadEntradas()
+      "
+
+      (click)="continuar()"
+    >
+      CONTINUAR
+    </button>
+
+  </div>
+
+</div>

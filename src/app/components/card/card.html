@@ -1,0 +1,37 @@
+<div class="pelicula-card">
+
+    <img
+        [src]="pelicula.imagen"
+        [alt]="pelicula.nombre"
+    >
+
+    <div class="pelicula-info">
+
+        <h3>
+            {{ pelicula.nombre }}
+        </h3>
+
+        <div class="pelicula-datos">
+
+            <span>{{ formatearDuracion(pelicula.duracion) }}</span>
+
+            <span>
+                {{
+                    pelicula.clasificacion_de_edad === 0
+                        ? 'ATP'
+                        : '+' + pelicula.clasificacion_de_edad
+                }}
+            </span>
+
+        </div>
+
+        <button
+            type="button"
+            [routerLink]="['/peliculas', pelicula.id]"
+        >
+            Ver funciones
+        </button>
+
+    </div>
+
+</div>

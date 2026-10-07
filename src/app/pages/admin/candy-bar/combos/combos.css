@@ -1,0 +1,517 @@
+/* =========================
+   CONTENEDOR
+========================= */
+
+.combos-container {
+  padding: 30px 40px;
+  color: white;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.combos-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.combos-header h1 {
+  margin: 0;
+  font-size: 32px;
+}
+
+.combos-header p {
+  margin-top: 6px;
+  color: #aaa;
+  font-size: 16px;
+}
+
+
+/* =========================
+   BOTÓN CREAR
+========================= */
+
+.btn-crear {
+  background: #ed0712;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-crear:hover {
+  background: #ff1b25;
+}
+
+
+/* =========================
+   FORMULARIO
+========================= */
+
+.formulario-combo {
+  background: #202020;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 25px;
+  margin-bottom: 30px;
+}
+
+.formulario-combo h2 {
+  margin-top: 0;
+  margin-bottom: 25px;
+}
+
+.formulario-combo h3 {
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+
+/* =========================
+   CAMPOS
+========================= */
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.campo label {
+  font-weight: bold;
+  color: #ddd;
+}
+
+.campo input {
+  width: 100%;
+  box-sizing: border-box;
+  background: #151515;
+  color: white;
+  border: 1px solid #444;
+  border-radius: 7px;
+  padding: 12px;
+  font-size: 15px;
+  outline: none;
+}
+
+.campo input:focus {
+  border-color: #ed0712;
+}
+
+
+/* =========================
+   INPUT DE IMAGEN
+========================= */
+
+.campo input[type="file"] {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.campo input[type="file"]::file-selector-button {
+  background: #333;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 12px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.campo input[type="file"]::file-selector-button:hover {
+  background: #444;
+}
+
+
+/* =========================
+   INFORMACIÓN DESCUENTO
+========================= */
+
+.descuento-info {
+  color: #aaa;
+  font-size: 14px;
+  margin: 5px 0 25px;
+}
+
+
+/* =========================
+   PRODUCTOS DEL COMBO
+========================= */
+
+.producto-seleccion {
+  display: grid;
+  grid-template-columns: 1fr 150px 80px;
+  align-items: center;
+  gap: 15px;
+  background: #151515;
+  border: 1px solid #333;
+  border-radius: 7px;
+  padding: 12px 15px;
+  margin-bottom: 8px;
+}
+
+.producto-seleccion span:first-child {
+  color: white;
+  font-weight: 500;
+}
+
+.producto-seleccion span:nth-child(2) {
+  color: #ddd;
+  text-align: right;
+}
+
+.producto-seleccion input {
+  width: 60px;
+  box-sizing: border-box;
+  background: #202020;
+  color: white;
+  border: 1px solid #444;
+  border-radius: 6px;
+  padding: 8px;
+  text-align: center;
+  outline: none;
+}
+
+.producto-seleccion input:focus {
+  border-color: #ed0712;
+}
+
+
+/* =========================
+   PRECIO DEL COMBO
+========================= */
+
+.precio-combo {
+  margin-top: 25px;
+  padding: 20px;
+  background: #151515;
+  border: 1px solid #333;
+  border-radius: 8px;
+}
+
+.precio-fila {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  color: #aaa;
+}
+
+.precio-fila strong {
+  color: white;
+}
+
+.precio-final {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  padding-top: 15px;
+  border-top: 1px solid #333;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.precio-final strong {
+  color: #ed0712;
+}
+
+
+/* =========================
+   BOTONES DEL FORMULARIO
+========================= */
+
+.formulario-acciones {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 25px;
+}
+
+.formulario-acciones button {
+  border: none;
+  border-radius: 7px;
+  padding: 11px 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-cancelar {
+  background: #333;
+  color: white;
+}
+
+.btn-guardar {
+  background: #ed0712;
+  color: white;
+}
+
+.btn-cancelar:hover,
+.btn-guardar:hover {
+  opacity: 0.85;
+}
+
+
+/* =========================
+   LISTA DE COMBOS
+========================= */
+
+.combos-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+
+/* =========================
+   TARJETA DE COMBO
+========================= */
+
+.combo-card {
+  background: #202020;
+  border: 1px solid #333;
+  border-radius: 10px;
+
+  padding: 20px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 20px;
+
+  transition: 0.2s;
+}
+
+.combo-card:hover {
+  border-color: #444;
+}
+
+
+/* =========================
+   IMAGEN DEL COMBO
+========================= */
+
+.combo-imagen {
+  width: 120px;
+  height: 100px;
+
+  object-fit: cover;
+
+  border-radius: 8px;
+
+  border: 1px solid #333;
+
+  flex-shrink: 0;
+
+  background: #151515;
+}
+
+
+/* =========================
+   INFORMACIÓN DEL COMBO
+========================= */
+
+.combo-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.combo-info h2 {
+  margin: 0 0 8px;
+  font-size: 20px;
+}
+
+.combo-info p {
+  color: #aaa;
+  margin: 0 0 10px;
+}
+
+.combo-info strong {
+  font-size: 20px;
+  color: white;
+}
+
+
+/* =========================
+   ACCIONES DEL COMBO
+========================= */
+
+.combo-acciones {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.combo-acciones button {
+  border: none;
+  padding: 9px 14px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.btn-editar {
+  background: #333;
+  color: white;
+}
+
+.btn-desactivar {
+  background: #ed0712;
+  color: white;
+}
+
+.btn-editar:hover,
+.btn-desactivar:hover {
+  opacity: 0.85;
+}
+
+
+/* =========================
+   SIN COMBOS
+========================= */
+
+.sin-combos {
+  color: #999;
+  padding: 30px;
+  text-align: center;
+  background: #181818;
+  border: 1px dashed #333;
+  border-radius: 10px;
+}
+
+
+/* =========================
+   PRODUCTOS DISPONIBLES
+========================= */
+
+.productos-disponibles {
+  margin-top: 40px;
+}
+
+.productos-disponibles h2 {
+  margin-bottom: 15px;
+  font-size: 22px;
+}
+
+
+/* =========================
+   GRID DE PRODUCTOS
+========================= */
+
+.productos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+
+/* =========================
+   PRODUCTO
+========================= */
+
+.producto {
+  background: #202020;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 15px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  transition: 0.2s;
+}
+
+.producto:hover {
+  border-color: #444;
+}
+
+.producto span {
+  color: white;
+}
+
+.producto strong {
+  color: white;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+
+  .productos-grid {
+    grid-template-columns: repeat(
+      2,
+      minmax(0, 1fr)
+    );
+  }
+
+}
+
+
+@media (max-width: 650px) {
+
+  .combos-container {
+    padding: 20px;
+  }
+
+  .combos-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .combo-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .combo-imagen {
+    width: 100%;
+    height: 180px;
+  }
+
+  .combo-acciones {
+    width: 100%;
+  }
+
+  .combo-acciones button {
+    flex: 1;
+  }
+
+  .productos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .producto-seleccion {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .producto-seleccion span:nth-child(2) {
+    text-align: left;
+  }
+
+  .formulario-acciones {
+    flex-direction: column;
+  }
+
+  .formulario-acciones button {
+    width: 100%;
+  }
+
+}

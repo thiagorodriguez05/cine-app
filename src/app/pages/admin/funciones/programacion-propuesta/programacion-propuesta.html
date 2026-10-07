@@ -1,0 +1,105 @@
+<div class="propuesta-container">
+
+  <div class="propuesta-header">
+
+    <div>
+      <h2>
+        Propuesta de programación semanal
+      </h2>
+
+      <p>
+        Revisá las funciones de los próximos 7 días antes de confirmarlas.
+      </p>
+    </div>
+
+  </div>
+
+  <div class="propuesta-dias">
+
+    <div
+      class="propuesta-dia"
+      *ngFor="let dia of propuesta">
+
+      <div class="dia-header">
+
+        <h3>
+          {{ formatearFecha(dia.fecha) }}
+        </h3>
+
+      </div>
+
+      <div class="propuesta-salas">
+
+        <div
+          class="propuesta-sala"
+          *ngFor="let sala of dia.salas">
+
+          <div class="sala-header">
+
+            <h4>
+              {{ sala.salaNombre }}
+            </h4>
+
+            <span>
+              {{ sala.formato }}
+            </span>
+
+          </div>
+
+          <div class="propuesta-funciones">
+
+            <div
+              class="propuesta-funcion"
+              *ngFor="let funcion of sala.funciones">
+
+              <div class="propuesta-horario">
+
+                <strong>
+                  {{ funcion.horaInicio }}
+                </strong>
+
+                <span>
+                  - {{ funcion.horaFin }}
+                </span>
+
+              </div>
+
+              <div class="propuesta-pelicula">
+                {{ funcion.peliculaNombre }}
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="propuesta-footer">
+
+    <button
+      type="button"
+      class="btn-cancelar"
+      (click)="volverAEditar()">
+
+      Volver a editar
+
+    </button>
+
+    <button
+      type="button"
+      class="btn-guardar"
+      (click)="confirmarProgramacion()">
+
+      Confirmar programación
+
+    </button>
+
+  </div>
+
+</div>

@@ -1,0 +1,102 @@
+<div class="candy-bar-container">
+
+  <header class="candy-bar-header">
+    <div>
+      <h1>Candy Bar</h1>
+      <p>Elegí algo para disfrutar durante la película</p>
+    </div>
+  </header>
+
+  <nav class="categorias">
+
+    <button
+      type="button"
+      [class.categoria-activa]="categoriaSeleccionada() === null"
+      (click)="seleccionarCategoria(null)">
+      Todos
+    </button>
+
+    <button
+      *ngFor="let categoria of categorias()"
+      type="button"
+      [class.categoria-activa]="categoriaSeleccionada() === categoria.id"
+      (click)="seleccionarCategoria(categoria.id)">
+      {{ categoria.nombre }}
+    </button>
+
+  </nav>
+
+  <main class="productos">
+
+    <div
+      class="producto"
+      *ngFor="let producto of productosFiltrados()">
+
+      <div class="producto-imagen">
+
+        <img
+          *ngIf="producto.imagen"
+          [src]="producto.imagen"
+          [alt]="producto.nombre">
+
+      </div>
+
+      <div class="producto-info">
+
+        <h2>
+          {{ producto.nombre }}
+        </h2>
+
+        <p>
+          {{ producto.descripcion }}
+        </p>
+
+        <div class="producto-footer">
+
+          <strong>
+            ${{ producto.precio | number:'1.0-0' }}
+          </strong>
+
+          <button
+            type="button"
+            class="btn-agregar"
+            (click)="agregarProducto(producto)">
+            Agregar
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <p
+      class="sin-productos"
+      *ngIf="productosFiltrados().length === 0">
+      No hay productos disponibles.
+    </p>
+
+  </main>
+
+  <footer class="candy-bar-footer">
+
+    <div>
+      <span>Tu pedido</span>
+
+      <strong>
+        {{ cantidadPedido() }} productos
+        ·
+        ${{ totalPedido() | number:'1.0-0' }}
+      </strong>
+    </div>
+
+    <button
+      type="button"
+      class="btn-continuar"
+      (click)="continuar()">
+      CONTINUAR
+    </button>
+
+  </footer>
+
+</div>

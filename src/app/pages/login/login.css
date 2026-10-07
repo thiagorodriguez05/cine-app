@@ -1,0 +1,136 @@
+.login-container {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  background: #141414;
+}
+
+.login-card {
+  width: min(380px, 100%);
+  padding: 40px;
+  box-sizing: border-box;
+  border-radius: 12px;
+  background: #222;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.login-card h1 {
+  margin: 0 0 30px;
+  text-align: center;
+  color: white;
+  font-family: Arial, sans-serif;
+  font-size: 30px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 22px;
+}
+
+.form-group label {
+  margin-bottom: 8px;
+  color: #eee;
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+}
+
+.form-group input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #555;
+  border-radius: 6px;
+  background: #303030;
+  color: white;
+  font-size: 15px;
+  outline: none;
+}
+
+.form-group input:focus {
+  border-color: #e50914;
+}
+
+.form-group input::placeholder {
+  color: #999;
+}
+
+.form-group input.ng-invalid.ng-touched {
+  border-color: #e50914;
+}
+
+.error {
+  margin-top: 6px;
+  color: #e50914;
+  font-size: 12px;
+}
+
+.mensaje {
+  margin: 0 0 15px;
+  text-align: center;
+  color: #e50914;
+  font-size: 14px;
+}
+
+.login-card button {
+  width: 100%;
+  padding: 13px;
+  border: none;
+  border-radius: 6px;
+  background: #e50914;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.login-card button:hover {
+  background: #b20710;
+}
+
+.login-card button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.login-card button:focus,
+.login-card button:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+.registro-link {
+  margin-top: 25px;
+  text-align: center;
+  color: #ccc;
+  font-size: 14px;
+}
+
+.login-card a {
+  color: #e50914;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.login-card a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 500px) {
+  .login-container {
+    padding: 15px;
+  }
+
+  .login-card {
+    padding: 30px 22px;
+  }
+
+  .login-card h1 {
+    font-size: 26px;
+    margin-bottom: 25px;
+  }
+}

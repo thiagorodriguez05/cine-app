@@ -1,0 +1,92 @@
+.salas-container {
+    padding: 25px;
+}
+
+
+/* =========================
+   HEADER
+   ========================= */
+
+.salas-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 25px;
+}
+
+.salas-header h2 {
+    margin: 0;
+    font-size: 30px;
+}
+
+.salas-header p {
+    margin: 6px 0;
+    color: #aaa;
+}
+
+
+/* =========================
+   LISTA DE SALAS
+   ========================= */
+
+.salas-lista {
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+.sala-item {
+    background: #222;
+
+    border: 1px solid #333;
+    border-radius: 10px;
+
+    padding: 20px;
+}
+
+.sala-info h3 {
+    margin: 0 0 8px;
+
+    font-size: 20px;
+}
+
+.sala-info p {
+    margin: 0;
+
+    color: #aaa;
+}
+
+.sala-info span {
+    color: white;
+}
+
+.sala-capacidad {
+    margin-top: 6px !important;
+
+    color: #777 !important;
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+@media (max-width: 600px) {
+
+    .salas-container {
+        padding: 15px;
+    }
+
+    .salas-header {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 15px;
+    }
+
+}

@@ -1,0 +1,296 @@
+.resumen-container {
+  min-height: 100vh;
+  background: #111;
+  color: white;
+  overflow-x: hidden;
+}
+
+.resumen-header {
+  padding: 15px 40px 12px;
+  border-bottom: 1px solid #292929;
+}
+
+.resumen-header h1 {
+  margin: 0 0 3px;
+  font-size: 26px;
+}
+
+.resumen-header p {
+  margin: 0;
+  color: #999;
+  font-size: 14px;
+}
+
+.resumen-contenido {
+  width: min(1000px, calc(100% - 50px));
+  margin: 12px auto;
+}
+
+.pelicula {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: #242424;
+}
+
+.pelicula img {
+  width: 55px;
+  height: 75px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.pelicula h2 {
+  margin: 0 0 5px;
+  font-size: 19px;
+}
+
+.pelicula p {
+  margin: 0;
+  color: #999;
+  font-size: 13px;
+}
+
+.resumen-seccion {
+  margin-top: 10px;
+  padding: 12px 15px;
+  border-radius: 10px;
+  background: #242424;
+}
+
+.resumen-seccion h2 {
+  margin: 0 0 7px;
+  font-size: 17px;
+}
+
+.resumen-fila {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 5px 0;
+  border-bottom: 1px solid #333;
+  font-size: 14px;
+}
+
+.resumen-fila:last-child {
+  border-bottom: none;
+}
+
+.resumen-fila span:last-child {
+  color: #aaa;
+}
+
+.subtotal {
+  margin-top: 5px;
+}
+
+/* Total y descuento */
+
+.total-compra {
+  margin-top: 10px;
+  padding: 12px 15px;
+  border-radius: 10px;
+  background: #242424;
+}
+
+.total-compra .resumen-fila {
+  padding: 7px 0;
+}
+
+.total-compra .resumen-fila:last-child {
+  border-bottom: none;
+}
+
+.descuento {
+  color: #35c759;
+}
+
+.descuento strong {
+  color: #35c759;
+}
+
+.total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8px;
+  padding-top: 12px;
+  border-top: 1px solid #444;
+}
+
+.total span {
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.total strong {
+  font-size: 20px;
+  color: #ed1018;
+}
+
+.acciones {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.btn-volver,
+.btn-pagar {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  font-weight: bold;
+  outline: none;
+}
+
+.btn-volver {
+  background: #333;
+  color: white;
+}
+
+.btn-pagar {
+  background: #ed1018;
+  color: white;
+}
+
+.btn-pagar:hover {
+  background: #c90d14;
+}
+
+.btn-volver:focus,
+.btn-pagar:focus,
+.btn-volver:focus-visible,
+.btn-pagar:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+.btn-pagar:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.entradas-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.entrada-qr {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid #333;
+  border-radius: 8px;
+  background: #1c1c1c;
+}
+
+.entrada-info {
+  min-width: 0;
+}
+
+.entrada-qr p {
+  margin: 3px 0 0;
+  color: #999;
+  font-size: 12px;
+}
+
+.entrada-qr strong {
+  font-size: 13px;
+}
+
+.entrada-qr img {
+  flex-shrink: 0;
+  width: 55px;
+  height: 55px;
+  padding: 3px;
+  border-radius: 5px;
+  background: white;
+}
+
+.resumen-seccion > .btn-pagar {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+@media (max-width: 700px) {
+  .entradas-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .resumen-header {
+    padding: 15px 15px 12px;
+  }
+
+  .resumen-header h1 {
+    font-size: 23px;
+  }
+
+  .resumen-contenido {
+    width: calc(100% - 20px);
+    margin: 10px auto;
+  }
+
+  .pelicula {
+    gap: 10px;
+    padding: 9px;
+  }
+
+  .pelicula img {
+    width: 50px;
+    height: 68px;
+  }
+
+  .pelicula h2 {
+    font-size: 17px;
+  }
+
+  .pelicula p {
+    font-size: 12px;
+  }
+
+  .resumen-seccion {
+    padding: 10px;
+  }
+
+  .resumen-fila {
+    font-size: 13px;
+  }
+
+  .total-compra {
+    padding: 10px;
+  }
+
+  .total span {
+    font-size: 16px;
+  }
+
+  .total strong {
+    font-size: 19px;
+  }
+
+  .entrada-qr {
+    min-height: 60px;
+  }
+
+  .entrada-qr img {
+    width: 55px;
+    height: 55px;
+  }
+
+  .acciones {
+    flex-direction: column;
+  }
+}

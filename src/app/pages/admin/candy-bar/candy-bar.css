@@ -1,0 +1,85 @@
+.candy-bar-container {
+    padding: 25px;
+}
+
+.candy-bar-header {
+    margin-bottom: 30px;
+}
+
+.candy-bar-header h2 {
+    margin: 0;
+    font-size: 30px;
+}
+
+.candy-bar-header p {
+    margin: 6px 0 0;
+    color: #aaa;
+}
+
+.candy-bar-opciones {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.candy-card {
+    background: #222;
+    border: 1px solid #333;
+    border-radius: 10px;
+    padding: 25px;
+
+    display: flex;
+    flex-direction: column;
+
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.candy-card:hover {
+    transform: translateY(-4px);
+    border-color: #555;
+}
+
+.candy-icon {
+    font-size: 35px;
+    margin-bottom: 15px;
+}
+
+.candy-info {
+    flex: 1;
+}
+
+.candy-info h3 {
+    margin: 0 0 10px;
+    font-size: 21px;
+}
+
+.candy-info p {
+    margin: 0;
+    color: #aaa;
+    line-height: 1.5;
+}
+
+.candy-card button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+
+    background: #e50914;
+    color: white;
+
+    border: none;
+    border-radius: 6px;
+
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.candy-card button:hover {
+    background: #b20710;
+}
+
+@media (max-width: 900px) {
+    .candy-bar-opciones {
+        grid-template-columns: 1fr;
+    }
+}

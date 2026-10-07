@@ -1,0 +1,238 @@
+<div class="formulario-overlay">
+
+    <div class="formulario-container">
+
+        <!-- ENCABEZADO -->
+
+        <div class="formulario-header">
+
+            <div>
+                <h2>
+                    {{ editando ? 'Editar película' : 'Nueva película' }}
+                </h2>
+
+                <p>
+                    {{ editando
+                        ? 'Modificá los datos de la película'
+                        : 'Completá los datos de la película' }}
+                </p>
+            </div>
+
+            <button
+                type="button"
+                class="btn-cerrar"
+                (click)="cerrar()"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <!-- FORMULARIO -->
+
+        <div class="formulario-body">
+
+            <!-- IMAGEN -->
+
+            <div class="campo">
+
+                <label>
+                    Imagen
+                </label>
+
+                <input
+                    type="file"
+                    accept="image/*"
+                    (change)="seleccionarImagen($event)"
+                >
+
+                <small *ngIf="editando">
+                    Dejá este campo vacío si querés mantener la imagen actual.
+                </small>
+
+            </div>
+
+
+            <!-- NOMBRE -->
+
+            <div class="campo">
+
+                <label>
+                    Nombre
+                </label>
+
+                <input
+                    type="text"
+                    [(ngModel)]="nombre"
+                    placeholder="Nombre de la película"
+                >
+
+            </div>
+
+
+            <!-- SINOPSIS -->
+
+            <div class="campo">
+
+                <label>
+                    Sinopsis
+                </label>
+
+                <textarea
+                    [(ngModel)]="sinopsis"
+                    rows="4"
+                    placeholder="Sinopsis de la película"
+                ></textarea>
+
+            </div>
+
+
+            <!-- DURACIÓN -->
+
+            <div class="campo">
+
+                <label>
+                    Duración
+                </label>
+
+                <input
+                    type="number"
+                    [(ngModel)]="duracion"
+                    min="1"
+                    placeholder="Duración en minutos"
+                >
+
+            </div>
+
+
+            <!-- FECHA DE ESTRENO -->
+
+            <div class="campo">
+
+                <label>
+                    Fecha de estreno
+                </label>
+
+                <input
+                    type="date"
+                    [(ngModel)]="fechaDeEstreno"
+                    [min]="fechaMinima()"
+                    onkeydown="return false"
+                >
+
+            </div>
+
+
+            <!-- CLASIFICACIÓN -->
+
+            <div class="campo">
+
+                <label>
+                    Clasificación de edad
+                </label>
+
+                <select
+                    [(ngModel)]="clasificacionDeEdad"
+                >
+
+                    <option [ngValue]="0">
+                        ATP
+                    </option>
+
+                    <option [ngValue]="13">
+                        +13
+                    </option>
+
+                    <option [ngValue]="16">
+                        +16
+                    </option>
+
+                    <option [ngValue]="18">
+                        +18
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- GÉNEROS -->
+
+            <div class="campo">
+
+                <label>
+                    Géneros
+                </label>
+
+                <div class="opciones">
+
+                    <button
+                        type="button"
+                        *ngFor="let genero of generos"
+                        [class.seleccionado]="
+                            generosSeleccionados.includes(genero.id)
+                        "
+                        (click)="seleccionarGenero(genero.id)"
+                    >
+                        {{ genero.nombre }}
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- FORMATOS -->
+
+            <div class="campo">
+
+                <label>
+                    Formatos
+                </label>
+
+                <div class="opciones">
+
+                    <button
+                        type="button"
+                        *ngFor="let formato of formatos"
+                        [class.seleccionado]="
+                            formatosSeleccionados.includes(formato.id)
+                        "
+                        (click)="seleccionarFormato(formato.id)"
+                    >
+                        {{ formato.nombre }}
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ACCIONES -->
+
+        <div class="formulario-footer">
+
+            <button
+                type="button"
+                class="btn-cancelar"
+                (click)="cerrar()"
+            >
+                Cancelar
+            </button>
+
+            <button
+                type="button"
+                class="btn-guardar"
+                (click)="guardarFormulario()"
+            >
+                {{ editando ? 'Guardar cambios' : 'Crear película' }}
+            </button>
+
+        </div>
+
+    </div>
+
+</div>

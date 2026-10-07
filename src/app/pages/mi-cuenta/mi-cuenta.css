@@ -1,0 +1,423 @@
+.mi-cuenta {
+    min-height: calc(100vh - 70px);
+    padding: 40px 8%;
+    background: #111;
+    color: white;
+}
+
+
+/* ==============================
+   BOTÓN VOLVER
+   ============================== */
+
+.btn-volver {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 25px;
+    padding: 8px 14px;
+    border: 1px solid #444;
+    border-radius: 6px;
+    background: #202020;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.btn-volver:hover {
+    background: #333;
+    border-color: #555;
+}
+
+
+/* ==============================
+   ENCABEZADO
+   ============================== */
+
+.cuenta-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 35px;
+}
+
+.cuenta-header h1 {
+    margin: 0 0 8px;
+    font-size: 32px;
+}
+
+.cuenta-header p {
+    margin: 0;
+    color: #aaa;
+    font-size: 16px;
+}
+
+
+/* ==============================
+   PUNTOS
+   ============================== */
+
+.puntos {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px 22px;
+    background: #202020;
+    border: 1px solid #333;
+    border-radius: 10px;
+}
+
+.puntos > span {
+    font-size: 30px;
+}
+
+.puntos div {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.puntos small {
+    color: #aaa;
+    font-size: 13px;
+}
+
+.puntos strong {
+    color: #e50914;
+    font-size: 24px;
+}
+
+
+/* ==============================
+   DATOS, MOVIMIENTOS Y RECOMPENSAS
+   ============================== */
+
+.datos,
+.movimientos,
+.recompensas {
+    background: #202020;
+    border: 1px solid #333;
+    border-radius: 10px;
+    padding: 25px;
+    margin-bottom: 25px;
+}
+
+.datos h2,
+.movimientos h2,
+.recompensas h2 {
+    margin: 0 0 20px;
+    font-size: 21px;
+}
+
+
+/* ==============================
+   DATOS
+   ============================== */
+
+.dato {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #333;
+}
+
+.dato:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.dato:first-of-type {
+    padding-top: 0;
+}
+
+.dato span {
+    color: #999;
+}
+
+.dato strong {
+    color: white;
+    font-weight: 500;
+}
+
+
+/* ==============================
+   MOVIMIENTOS
+   ============================== */
+
+.movimiento {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+    border-bottom: 1px solid #333;
+}
+
+.movimiento:last-of-type {
+    border-bottom: none;
+}
+
+.movimiento div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.movimiento strong {
+    color: white;
+    font-size: 15px;
+}
+
+.movimiento small {
+    color: #888;
+    font-size: 12px;
+}
+
+.movimiento > span {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.positivo {
+    color: #35c759;
+}
+
+.negativo {
+    color: #e50914;
+}
+
+.sin-movimientos {
+    margin: 0;
+    padding: 25px 0 5px;
+    text-align: center;
+    color: #888;
+}
+
+
+/* ==============================
+   RECOMPENSAS
+   ============================== */
+
+.recompensas-header {
+    margin-bottom: 20px;
+}
+
+.recompensas-header p {
+    margin: -10px 0 0;
+    color: #888;
+    font-size: 14px;
+}
+
+.recompensas-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+}
+
+
+/* ==============================
+   TARJETA DE RECOMPENSA
+   ============================== */
+
+.recompensa {
+    display: flex;
+    flex-direction: column;
+    min-height: 400px;
+    padding: 15px;
+    background: #181818;
+    border: 1px solid #333;
+    border-radius: 8px;
+    transition: border-color 0.2s, transform 0.2s;
+}
+
+.recompensa:hover {
+    border-color: #555;
+    transform: translateY(-2px);
+}
+
+
+/* ==============================
+   IMAGEN DE RECOMPENSA
+   ============================== */
+
+.recompensa-imagen {
+    width: 100%;
+    height: 180px;
+    margin-bottom: 18px;
+    overflow: hidden;
+    border-radius: 7px;
+    background: #111;
+}
+
+.recompensa-imagen img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.sin-imagen {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 55px;
+    color: #666;
+}
+
+
+/* ==============================
+   INFORMACIÓN DE RECOMPENSA
+   ============================== */
+
+.recompensa-info {
+    flex: 1;
+}
+
+.recompensa-info h3 {
+    margin: 0 0 8px;
+    color: white;
+    font-size: 18px;
+}
+
+.recompensa-info p {
+    margin: 0;
+    color: #999;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+
+/* ==============================
+   PIE DE RECOMPENSA
+   ============================== */
+
+.recompensa-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.costo {
+    color: #e50914;
+    font-size: 15px;
+    white-space: nowrap;
+}
+
+.btn-canjear {
+    padding: 9px 14px;
+    border: none;
+    border-radius: 6px;
+    background: #e50914;
+    color: white;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+    transition: background 0.2s, opacity 0.2s;
+}
+
+.btn-canjear:hover:not(:disabled) {
+    background: #c90d14;
+}
+
+.btn-canjear:disabled {
+    background: #333;
+    color: #777;
+    cursor: not-allowed;
+}
+
+
+/* ==============================
+   SIN RECOMPENSAS
+   ============================== */
+
+.sin-recompensas {
+    margin: 0;
+    padding: 25px 0 5px;
+    text-align: center;
+    color: #888;
+}
+
+
+/* ==============================
+   RESPONSIVE - TABLET / MOBILE
+   ============================== */
+
+@media (max-width: 700px) {
+
+    .mi-cuenta {
+        padding: 30px 20px;
+    }
+
+    .cuenta-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .puntos {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .dato {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .movimiento {
+        gap: 15px;
+    }
+
+    .recompensas-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .recompensa-footer {
+        align-items: flex-start;
+    }
+}
+
+
+/* ==============================
+   RESPONSIVE - CELULAR
+   ============================== */
+
+@media (max-width: 450px) {
+
+    .cuenta-header h1 {
+        font-size: 27px;
+    }
+
+    .datos,
+    .movimientos,
+    .recompensas {
+        padding: 20px;
+    }
+
+    .movimiento {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .recompensa {
+        min-height: 380px;
+    }
+
+    .recompensa-imagen {
+        height: 160px;
+    }
+
+    .recompensa-footer {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .btn-canjear {
+        width: 100%;
+    }
+}

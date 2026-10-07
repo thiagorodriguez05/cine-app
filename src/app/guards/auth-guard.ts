@@ -14,25 +14,25 @@ export const authGuard: CanActivateFn = async (route, state) => {
     .auth
     .getUser();
 
-  // Primero verificamos si está logueado
+  // Primero verificamos si existe una sesión iniciada.
   if (!data.user) {
     return router.parseUrl('/login');
   }
 
-  // Obtenemos el rol del usuario
+  // Obtenemos el rol del usuario desde la tabla usuarios.
   const { data: usuario, error } =
     await authService.obtenerRol(data.user.id);
 
-  // Si hubo un error o no encontramos al usuario
+  // Si hubo un error o no encontramos al usuario, se bloquea el acceso.
   if (error || !usuario) {
     return router.parseUrl('/login');
   }
 
-  // Verificamos que sea administrador
+  // Solo los usuarios con rol ADMIN pueden acceder a las rutas protegidas.
   if (usuario.rol === 'ADMIN') {
     return true;
   }
 
-  // Si está logueado pero no es ADMIN
+  // Si está logueado pero no es administrador, se bloquea el acceso.
   return router.parseUrl('/login');
 };

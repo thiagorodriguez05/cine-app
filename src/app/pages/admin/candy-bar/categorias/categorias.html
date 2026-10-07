@@ -1,0 +1,45 @@
+<div class="categorias-container">
+
+    <div class="categorias-header">
+
+        <div>
+
+            <h2>Categorías</h2>
+
+            <p>
+                Categorías disponibles para los productos del Candy Bar
+            </p>
+
+            <p>
+                Cantidad: {{ categorias().length }}
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="categorias-lista">
+
+        <div
+            class="categoria-item"
+            *ngFor="let categoria of categorias()"
+        >
+
+            <span>
+                🍿 {{ categoria.nombre }}
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <p
+        class="sin-categorias"
+        *ngIf="categorias().length === 0"
+    >
+        No hay categorías cargadas.
+    </p>
+
+</div>

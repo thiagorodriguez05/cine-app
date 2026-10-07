@@ -1,0 +1,322 @@
+<div class="formulario-overlay">
+
+  <div class="formulario-container">
+
+    <div class="formulario-header">
+
+      <div>
+        <h2>Nueva programación semanal</h2>
+
+        <p>
+          Configurá las películas que querés programar durante la semana.
+        </p>
+      </div>
+
+      <button
+        type="button"
+        class="btn-cerrar"
+        (click)="cerrar()">
+        ×
+      </button>
+
+    </div>
+
+    <div class="formulario-body">
+
+      <div class="campo">
+
+        <label>
+          Semana de programación
+        </label>
+
+        <div class="semana">
+
+          <div class="fecha-inicio">
+
+            <small>
+              Desde
+            </small>
+
+            <input
+              type="date"
+              [ngModel]="fechaDesde"
+              (ngModelChange)="cambiarFecha($event)"
+              [min]="fechaMinima()"
+              onkeydown="return false">
+
+          </div>
+
+          <span>
+            hasta
+          </span>
+
+          <div class="fecha-fin">
+
+            <small>
+              Hasta
+            </small>
+
+            <div class="fecha-calculada">
+              {{ obtenerFechaFin() || 'Se calcula automáticamente' }}
+            </div>
+
+          </div>
+
+        </div>
+
+        <small class="ayuda">
+          La programación se realizará dentro de los 7 días siguientes.
+        </small>
+
+      </div>
+
+      <div class="campo">
+
+        <label>
+          Películas a programar
+        </label>
+
+        <div class="peliculas-lista">
+
+          <div
+            class="pelicula-opcion"
+            *ngFor="let pelicula of peliculas">
+
+            <label class="pelicula-checkbox">
+
+              <input
+                type="checkbox"
+                [checked]="peliculaSeleccionada(pelicula.id)"
+                (change)="seleccionarPelicula(pelicula.id)">
+
+              <span>
+                {{ pelicula.nombre }}
+              </span>
+
+            </label>
+
+            <div
+              class="pelicula-configuracion"
+              *ngIf="peliculaSeleccionada(pelicula.id)">
+
+              <div class="configuracion-bloque">
+
+                <span class="configuracion-titulo">
+                  Formatos
+                </span>
+
+                <div class="formatos">
+
+                  <button
+                    type="button"
+                    class="btn-formato"
+                    *ngFor="let formato of obtenerFormatos(pelicula.id)"
+                    [class.seleccionado]="
+                      formatoSeleccionado(
+                        pelicula.id,
+                        formato
+                      )
+                    "
+                    (click)="
+                      seleccionarFormato(
+                        pelicula.id,
+                        formato
+                      )
+                    ">
+
+                    {{ formato }}
+
+                  </button>
+
+                </div>
+
+                <small
+                  *ngIf="obtenerFormatos(pelicula.id).length === 0">
+
+                  Esta película no tiene formatos disponibles.
+
+                </small>
+
+              </div>
+
+              <div class="configuracion-bloque">
+
+                <span class="configuracion-titulo">
+                  Días de programación
+                </span>
+
+                <div class="dias">
+
+                  <button
+                    type="button"
+                    class="btn-dia"
+                    *ngFor="let dia of dias"
+                    [class.seleccionado]="
+                      diaSeleccionado(
+                        pelicula.id,
+                        dia.numero
+                      )
+                    "
+                    (click)="
+                      seleccionarDia(
+                        pelicula.id,
+                        dia.numero
+                      )
+                    ">
+
+                    {{ dia.nombre }}
+
+                  </button>
+
+                </div>
+
+              </div>
+
+              <div class="configuracion-bloque">
+
+                <span class="configuracion-titulo">
+                  Horario de programación
+                </span>
+
+                <div class="horario-franja">
+
+                  <div class="horario-select">
+
+                    <small>
+                      Desde
+                    </small>
+
+                    <select
+                      [(ngModel)]="
+                        peliculasSeleccionadas[
+                          peliculasSeleccionadas.findIndex(
+                            item =>
+                              item.peliculaId === pelicula.id
+                          )
+                        ].horaDesde
+                      ">
+
+                      <option
+                        value=""
+                        disabled>
+
+                        Seleccioná una hora
+
+                      </option>
+
+                      <option
+                        *ngFor="let horario of horarios"
+                        [value]="horario">
+
+                        {{ horario }}
+
+                      </option>
+
+                    </select>
+
+                  </div>
+
+                  <span>
+                    hasta
+                  </span>
+
+                  <div class="horario-select">
+
+                    <small>
+                      Hasta
+                    </small>
+
+                    <select
+                      [(ngModel)]="
+                        peliculasSeleccionadas[
+                          peliculasSeleccionadas.findIndex(
+                            item =>
+                              item.peliculaId === pelicula.id
+                          )
+                        ].horaHasta
+                      ">
+
+                      <option
+                        value=""
+                        disabled>
+
+                        Seleccioná una hora
+
+                      </option>
+
+                      <option
+                        *ngFor="let horario of horariosHasta(pelicula.id)"
+                        [value]="horario">
+
+                        {{ horario }}
+
+                      </option>
+
+                    </select>
+
+                  </div>
+
+                </div>
+
+                <small class="ayuda">
+                  El sistema buscará automáticamente las funciones posibles dentro de este horario.
+                </small>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="campo">
+
+        <label>
+          Idioma
+        </label>
+
+        <select
+          [(ngModel)]="idioma">
+
+          <option value="Castellano">
+            Castellano
+          </option>
+
+          <option value="Subtitulada">
+            Subtitulada
+          </option>
+
+        </select>
+
+      </div>
+
+    </div>
+
+    <div class="formulario-footer">
+
+      <button
+        type="button"
+        class="btn-cancelar"
+        (click)="cerrar()">
+
+        Cancelar
+
+      </button>
+
+      <button
+        type="button"
+        class="btn-guardar"
+        (click)="guardarFormulario()">
+
+        Generar programación semanal
+
+      </button>
+
+    </div>
+
+  </div>
+
+</div>

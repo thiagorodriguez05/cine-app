@@ -1,0 +1,362 @@
+<app-navbar></app-navbar>
+
+<div class="detalle-container">
+
+  <!-- VOLVER -->
+  <a
+    routerLink="/peliculas"
+    class="volver">
+    ← Volver a películas
+  </a>
+
+
+  <!-- DETALLE DE LA PELÍCULA -->
+  <div
+    class="pelicula-detalle"
+    *ngIf="pelicula() as pelicula">
+
+    <div class="pelicula-info">
+
+
+      <!-- ================================================ -->
+      <!-- IMAGEN -->
+      <!-- ================================================ -->
+
+      <div class="pelicula-imagen">
+
+        <img
+          [src]="pelicula.imagen"
+          [alt]="pelicula.nombre">
+
+      </div>
+
+
+      <!-- ================================================ -->
+      <!-- INFORMACIÓN -->
+      <!-- ================================================ -->
+
+      <div class="informacion">
+
+        <h1>
+          {{ pelicula.nombre }}
+        </h1>
+
+
+        <!-- DATOS DE LA PELÍCULA -->
+
+        <div class="datos-pelicula">
+
+          <span>
+            {{ formatearDuracion(pelicula.duracion) }}
+          </span>
+
+          <span>
+            +{{ pelicula.clasificacion_de_edad }}
+          </span>
+
+          <span>
+            Estreno:
+            {{ pelicula.fecha_de_estreno | date:'dd/MM/yyyy' }}
+          </span>
+
+        </div>
+
+
+        <!-- ================================================= -->
+        <!-- PELÍCULA YA ESTRENADA -->
+        <!-- ================================================= -->
+
+        <div
+          class="funciones"
+          *ngIf="!esProximamente()">
+
+
+          <!-- TÍTULO -->
+
+          <h2>
+
+            <span class="titulo-acento"></span>
+
+            Funciones
+
+          </h2>
+
+
+          <!-- ============================================== -->
+          <!-- FECHAS -->
+          <!-- ============================================== -->
+
+          <div class="fechas">
+
+            <button
+              *ngFor="let fecha of fechas()"
+              type="button"
+              [class.activa]="
+                fecha === fechaSeleccionada()
+              "
+              (click)="seleccionarFecha(fecha)">
+
+              <span>
+                {{ formatearFecha(fecha) }}
+              </span>
+
+              <small>
+                {{ fecha | date:'dd/MM' }}
+              </small>
+
+            </button>
+
+          </div>
+
+
+          <!-- ============================================== -->
+          <!-- FILTROS -->
+          <!-- ============================================== -->
+
+          <div class="filtros">
+
+
+            <!-- FORMATOS -->
+
+            <div class="filtro">
+
+              <span>
+                Formatos
+              </span>
+
+              <button
+                *ngFor="let formato of formatos()"
+                type="button"
+                [class.activo]="
+                  formato === formatoSeleccionado()
+                "
+                (click)="
+                  seleccionarFormato(formato)
+                ">
+
+                {{ formato }}
+
+              </button>
+
+            </div>
+
+
+            <!-- IDIOMAS -->
+
+            <div class="filtro">
+
+              <span>
+                Idioma
+              </span>
+
+              <button
+                *ngFor="let idioma of idiomas()"
+                type="button"
+                [class.activo]="
+                  idioma === idiomaSeleccionado()
+                "
+                (click)="
+                  seleccionarIdioma(idioma)
+                ">
+
+                {{ idioma }}
+
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <!-- ============================================== -->
+          <!-- HORARIOS -->
+          <!-- ============================================== -->
+
+          <div class="horarios">
+
+            <h3>
+              Horarios
+            </h3>
+
+
+            <!-- GRUPOS DE FUNCIONES -->
+
+            <div
+              class="funcion"
+              *ngFor="
+                let grupo of obtenerFuncionesAgrupadas()
+              ">
+
+
+              <!-- INFORMACIÓN -->
+
+              <div class="funcion-info">
+
+                <strong>
+                  {{ grupo.formato }}
+                </strong>
+
+                <span>
+                  · {{ grupo.idioma }}
+                </span>
+
+              </div>
+
+
+              <!-- HORARIOS -->
+
+              <div class="horarios-lista">
+
+                <button
+                  *ngFor="
+                    let funcion of grupo.funciones
+                  "
+                  type="button"
+                  [class.seleccionada]="
+                    funcion.id ===
+                    funcionSeleccionada()?.id
+                  "
+                  (click)="
+                    seleccionarFuncion(funcion)
+                  ">
+
+                  {{ funcion.hora_de_inicio }}
+
+                </button>
+
+              </div>
+
+            </div>
+
+
+            <!-- ============================================ -->
+            <!-- SIN FUNCIONES -->
+            <!-- ============================================ -->
+
+            <p
+              class="sin-funciones"
+              *ngIf="
+                obtenerFuncionesAgrupadas().length === 0
+              ">
+
+              No hay funciones disponibles
+              para los filtros seleccionados.
+
+            </p>
+
+          </div>
+
+
+          <!-- ============================================== -->
+          <!-- COMPRA -->
+          <!-- ============================================== -->
+
+          <div
+            class="comprar-container"
+            *ngIf="
+              funcionSeleccionada() as funcion
+            ">
+
+
+            <div class="funcion-seleccionada">
+
+              <span>
+                Horario seleccionado
+              </span>
+
+              <strong>
+                {{ funcion.hora_de_inicio }}
+              </strong>
+
+            </div>
+
+
+            <button
+              type="button"
+              class="btn-comprar"
+              (click)="comprarEntradas()">
+
+              COMPRAR ENTRADAS
+
+            </button>
+
+          </div>
+
+
+        </div>
+
+
+        <!-- ================================================= -->
+        <!-- PRÓXIMAMENTE -->
+        <!-- ================================================= -->
+
+        <div
+          class="mensaje-proximamente"
+          *ngIf="esProximamente()">
+
+
+          <div class="proximamente-icono">
+            🎬
+          </div>
+
+
+          <h2>
+            Próximamente
+          </h2>
+
+
+          <p>
+            Esta película todavía no tiene
+            funciones disponibles.
+          </p>
+
+
+          <p>
+            Volvé pronto para consultar
+            los horarios y comprar tus entradas.
+          </p>
+
+
+          <div class="fecha-estreno">
+
+            <span>
+              Fecha de estreno
+            </span>
+
+            <strong>
+              {{ pelicula.fecha_de_estreno | date:'dd/MM/yyyy' }}
+            </strong>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- ================================================= -->
+    <!-- SINOPSIS -->
+    <!-- ================================================= -->
+
+    <div class="informacion-inferior">
+
+      <h2>
+        Sinopsis
+      </h2>
+
+
+      <p class="sinopsis">
+
+        {{ pelicula.sinopsis || 'Sinopsis no disponible.' }}
+
+      </p>
+
+    </div>
+
+
+  </div>
+
+</div>

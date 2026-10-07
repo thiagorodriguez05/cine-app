@@ -1,0 +1,352 @@
+.formulario-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  z-index: 1000;
+}
+
+.formulario-container {
+  width: 100%;
+  max-width: 800px;
+  max-height: 90vh;
+  background: #181818;
+  border: 1px solid #333;
+  border-radius: 10px;
+  color: white;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.formulario-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 25px;
+  border-bottom: 1px solid #333;
+  flex-shrink: 0;
+}
+
+.formulario-header h2 {
+  margin: 0 0 6px;
+  font-size: 24px;
+}
+
+.formulario-header p {
+  margin: 0;
+  color: #999;
+  font-size: 14px;
+}
+
+.btn-cerrar {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  color: #aaa;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.btn-cerrar:hover {
+  color: white;
+}
+
+.formulario-body {
+  padding: 25px;
+  overflow-y: auto;
+  flex: 1;
+  min-height: 0;
+}
+
+.campo {
+  margin-bottom: 25px;
+}
+
+.campo > label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.semana {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.fecha-inicio,
+.fecha-fin {
+  flex: 1;
+}
+
+.fecha-inicio small,
+.fecha-fin small,
+.horario-select small {
+  display: block;
+  margin-bottom: 6px;
+  color: #999;
+  font-size: 12px;
+}
+
+.fecha-inicio input,
+.horario-select select,
+.campo > select {
+  width: 100%;
+  padding: 10px 12px;
+  background: #222;
+  border: 1px solid #444;
+  border-radius: 6px;
+  color: white;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.fecha-inicio input:focus,
+.horario-select select:focus,
+.campo > select:focus {
+  outline: none;
+  border-color: #e50914;
+}
+
+.fecha-calculada {
+  padding: 10px 12px;
+  background: #222;
+  border: 1px solid #444;
+  border-radius: 6px;
+  color: #ddd;
+  font-size: 14px;
+  min-height: 17px;
+}
+
+.ayuda {
+  display: block;
+  margin-top: 7px;
+  color: #777;
+  font-size: 12px;
+}
+
+/* Películas */
+
+.peliculas-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pelicula-opcion {
+  background: #222;
+  border: 1px solid #333;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.pelicula-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px;
+  cursor: pointer;
+}
+
+.pelicula-checkbox input {
+  width: 16px;
+  height: 16px;
+  accent-color: #e50914;
+  cursor: pointer;
+}
+
+.pelicula-checkbox span {
+  font-size: 14px;
+  color: #ddd;
+}
+
+/* Configuración de cada película */
+
+.pelicula-configuracion {
+  padding: 0 15px 18px;
+  border-top: 1px solid #333;
+}
+
+.configuracion-bloque {
+  margin-top: 18px;
+}
+
+.configuracion-titulo {
+  display: block;
+  margin-bottom: 10px;
+  color: #bbb;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* Formatos */
+
+.formatos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.btn-formato {
+  padding: 8px 14px;
+  background: #2b2b2b;
+  border: 1px solid #444;
+  border-radius: 6px;
+  color: #ccc;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.btn-formato:hover {
+  background: #333;
+  border-color: #666;
+}
+
+.btn-formato.seleccionado {
+  background: #e50914;
+  border-color: #e50914;
+  color: white;
+}
+
+/* Días */
+
+.dias {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.btn-dia {
+  padding: 8px 12px;
+  background: #2b2b2b;
+  border: 1px solid #444;
+  border-radius: 6px;
+  color: #ccc;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.btn-dia:hover {
+  background: #333;
+  border-color: #666;
+}
+
+.btn-dia.seleccionado {
+  background: #e50914;
+  border-color: #e50914;
+  color: white;
+}
+
+/* Horarios */
+
+.horario-franja {
+  display: flex;
+  align-items: flex-end;
+  gap: 15px;
+}
+
+.horario-select {
+  flex: 1;
+}
+
+.horario-franja > span {
+  padding-bottom: 10px;
+  color: #888;
+}
+
+/* Footer */
+
+.formulario-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 20px 25px;
+  border-top: 1px solid #333;
+  flex-shrink: 0;
+  background: #181818;
+}
+
+.btn-cancelar,
+.btn-guardar {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.btn-cancelar {
+  background: #333;
+  color: #ddd;
+}
+
+.btn-cancelar:hover {
+  background: #444;
+}
+
+.btn-guardar {
+  background: #e50914;
+  color: white;
+}
+
+.btn-guardar:hover {
+  background: #b20710;
+}
+
+/* Responsive */
+
+@media (max-width: 700px) {
+
+  .formulario-overlay {
+    padding: 10px;
+  }
+
+  .formulario-container {
+    max-height: 95vh;
+  }
+
+  .formulario-header,
+  .formulario-body {
+    padding: 20px;
+  }
+
+  .semana {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .semana > span {
+    display: none;
+  }
+
+  .horario-franja {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .horario-franja > span {
+    display: none;
+  }
+
+  .formulario-footer {
+    padding: 15px 20px;
+    flex-direction: column;
+  }
+
+  .btn-cancelar,
+  .btn-guardar {
+    width: 100%;
+  }
+}

@@ -1,0 +1,258 @@
+<div class="mi-cuenta">
+
+    <!-- VOLVER -->
+
+    <button
+        type="button"
+        class="btn-volver"
+        (click)="volver()"
+    >
+        ← Volver
+    </button>
+
+
+    <!-- ENCABEZADO -->
+
+    <div class="cuenta-header">
+
+        <div>
+
+            <h1>Mi cuenta</h1>
+
+            <p *ngIf="usuario()">
+                Hola, {{ usuario()?.nombre }}
+                {{ usuario()?.apellido }}
+            </p>
+
+        </div>
+
+
+        <!-- PUNTOS -->
+
+        <div class="puntos">
+
+            <span>⭐</span>
+
+            <div>
+
+                <small>Mis puntos</small>
+
+                <strong>
+                    {{ puntos() }}
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- DATOS DEL USUARIO -->
+
+    <section class="datos">
+
+        <h2>Mis datos</h2>
+
+        <div class="dato">
+
+            <span>Nombre</span>
+
+            <strong>
+                {{ usuario()?.nombre }}
+                {{ usuario()?.apellido }}
+            </strong>
+
+        </div>
+
+
+        <div class="dato">
+
+            <span>Email</span>
+
+            <strong>
+                {{ usuario()?.email }}
+            </strong>
+
+        </div>
+
+    </section>
+
+
+    <!-- MOVIMIENTOS -->
+
+    <section class="movimientos">
+
+        <h2>Movimientos de puntos</h2>
+
+
+        <div
+            class="movimiento"
+            *ngFor="let movimiento of movimientos()"
+        >
+
+            <div>
+
+                <strong>
+                    {{ movimiento.descripcion }}
+                </strong>
+
+                <small>
+                    {{ movimiento.fecha | date:'dd/MM/yyyy HH:mm' }}
+                </small>
+
+            </div>
+
+
+            <span
+                [class.positivo]="
+                    movimiento.cantidad > 0
+                "
+
+                [class.negativo]="
+                    movimiento.cantidad < 0
+                "
+            >
+
+                {{ movimiento.cantidad > 0 ? '+' : '' }}
+
+                {{ movimiento.cantidad }}
+
+                pts
+
+            </span>
+
+        </div>
+
+
+        <p
+            class="sin-movimientos"
+            *ngIf="movimientos().length === 0"
+        >
+            Todavía no tenés movimientos de puntos.
+        </p>
+
+    </section>
+
+
+    <!-- RECOMPENSAS -->
+
+    <section class="recompensas">
+
+        <div class="recompensas-header">
+
+            <div>
+
+                <h2>Recompensas</h2>
+
+                <p>
+                    Canjeá tus puntos por recompensas.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- LISTA DE RECOMPENSAS -->
+
+        <div
+            class="recompensas-grid"
+            *ngIf="recompensas().length > 0"
+        >
+
+            <div
+                class="recompensa"
+                *ngFor="let recompensa of recompensas()"
+            >
+
+                <!-- IMAGEN -->
+
+                <div class="recompensa-imagen">
+
+                    <img
+                        *ngIf="recompensa.imagen"
+                        [src]="recompensa.imagen"
+                        [alt]="recompensa.nombre"
+                    >
+
+                    <div
+                        *ngIf="!recompensa.imagen"
+                        class="sin-imagen"
+                    >
+                        🎁
+                    </div>
+
+                </div>
+
+
+                <!-- INFORMACIÓN -->
+
+                <div class="recompensa-info">
+
+                    <h3>
+                        {{ recompensa.nombre }}
+                    </h3>
+
+                    <p>
+                        {{ recompensa.descripcion }}
+                    </p>
+
+                </div>
+
+
+                <!-- PIE -->
+
+                <div class="recompensa-footer">
+
+                    <strong class="costo">
+
+                        ⭐
+                        {{ recompensa.costo_puntos }}
+                        pts
+
+                    </strong>
+
+
+                    <button
+                        type="button"
+                        class="btn-canjear"
+
+                        [disabled]="
+                            puntos() <
+                            recompensa.costo_puntos ||
+                            canjeando()
+                        "
+
+                        (click)="
+                            canjearRecompensa(recompensa)
+                        "
+                    >
+
+                        {{
+                            puntos() >= recompensa.costo_puntos
+                                ? 'CANJEAR'
+                                : 'PUNTOS INSUFICIENTES'
+                        }}
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- SIN RECOMPENSAS -->
+
+        <p
+            class="sin-recompensas"
+            *ngIf="recompensas().length === 0"
+        >
+            No hay recompensas disponibles.
+        </p>
+
+    </section>
+
+</div>

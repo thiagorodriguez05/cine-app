@@ -1,0 +1,237 @@
+<div class="compra-container">
+
+  <header class="compra-header">
+
+    <a
+      routerLink="/peliculas"
+      class="btn-volver">
+      ←
+    </a>
+
+    <h1>Entradas</h1>
+
+    <a
+      routerLink="/peliculas"
+      class="btn-cerrar">
+      ×
+    </a>
+
+  </header>
+
+  <div class="compra-contenido">
+
+    <main class="entradas">
+
+      <h2>Elegí el tipo de entrada</h2>
+
+      <h3>General</h3>
+
+      <div class="tipo-entrada">
+
+        <div class="entrada-info">
+
+          <strong>
+            Entrada menor
+          </strong>
+
+          <span>
+            ${{ precioMenor() | number:'1.0-0' }}
+          </span>
+
+        </div>
+
+        <div class="cantidad">
+
+          <button
+            type="button"
+            (click)="disminuirMenores()">
+            −
+          </button>
+
+          <span>
+            {{ cantidadMenores() }}
+          </span>
+
+          <button
+            type="button"
+            (click)="aumentarMenores()">
+            +
+          </button>
+
+        </div>
+
+      </div>
+
+      <div class="tipo-entrada">
+
+        <div class="entrada-info">
+
+          <strong>
+            Entrada adulto
+          </strong>
+
+          <span>
+            ${{ precioAdulto() | number:'1.0-0' }}
+          </span>
+
+        </div>
+
+        <div class="cantidad">
+
+          <button
+            type="button"
+            (click)="disminuirAdultos()">
+            −
+          </button>
+
+          <span>
+            {{ cantidadAdultos() }}
+          </span>
+
+          <button
+            type="button"
+            (click)="aumentarAdultos()">
+            +
+          </button>
+
+        </div>
+
+      </div>
+
+      <div class="tipo-entrada">
+
+        <div class="entrada-info">
+
+          <strong>
+            Entrada mayor
+          </strong>
+
+          <span>
+            ${{ precioMayor() | number:'1.0-0' }}
+          </span>
+
+        </div>
+
+        <div class="cantidad">
+
+          <button
+            type="button"
+            (click)="disminuirMayores()">
+            −
+          </button>
+
+          <span>
+            {{ cantidadMayores() }}
+          </span>
+
+          <button
+            type="button"
+            (click)="aumentarMayores()">
+            +
+          </button>
+
+        </div>
+
+      </div>
+
+    </main>
+
+    <aside class="resumen">
+
+      <h2>Resumen</h2>
+
+      <div
+        class="pelicula-resumen"
+        *ngIf="pelicula() as pelicula">
+
+        <span>
+          Película
+        </span>
+
+        <div class="pelicula-datos">
+
+          <img
+            [src]="pelicula.imagen"
+            [alt]="pelicula.nombre">
+
+          <div>
+
+            <strong>
+              {{ pelicula.nombre }}
+            </strong>
+
+            <span>
+              {{ funcion()?.formato }}
+              ·
+              {{ funcion()?.idioma }}
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div
+        class="funcion-resumen"
+        *ngIf="funcion() as funcion">
+
+        <span>
+          Cine, día y horario
+        </span>
+
+        <div class="funcion-datos">
+
+          <div class="icono-fecha">
+            📅
+          </div>
+
+          <div>
+
+            <strong>
+              Sala {{ funcion.sala_id }}
+            </strong>
+
+            <span>
+              {{ funcion.fecha | date:'dd/MM/yyyy' }}
+              ·
+              {{ funcion.hora_de_inicio }}
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="resumen-footer">
+
+        <div class="total">
+
+          <span>
+            Total
+          </span>
+
+          <strong>
+            ${{ total() | number:'1.0-0' }}
+          </strong>
+
+        </div>
+
+        <button
+          type="button"
+          class="btn-continuar"
+          [disabled]="totalEntradas() === 0"
+          (click)="continuar()">
+
+          CONTINUAR
+
+        </button>
+
+      </div>
+
+    </aside>
+
+  </div>
+
+</div>
